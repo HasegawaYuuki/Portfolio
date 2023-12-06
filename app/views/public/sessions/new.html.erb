@@ -1,7 +1,9 @@
+<!--顧客側　ログイン画面-->
+
 <div class="card border-info shadow p-3 mb-5 bg-body-tertiary rounded mx-auto mt-5" style="width: 500px;">
 
   <h2>ログイン</h2>
-
+  <!--ログインフォーム-->
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email %><br />
