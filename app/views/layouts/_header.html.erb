@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Spotlight Reviews', root_path %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <% if admin_signed_in? %>
+        <li class="nav-item mx-3">
+          <%= link_to '会員一覧', admin_customers_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to '投稿一覧', admin_reviews_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-info" %>
+        </li>
+      <% elseif customer_signed_in? %>
+        <li class="nav-item mx-3">
+          <%= link_to 'マイページ', customers_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to '投稿一覧', reviews_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-info" %>
+        </li>
+      <% else %>
+        <li class="nav-item mx-3">
+          <%= link_to 'About', about_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to '投稿一覧', reviews_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-info" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
