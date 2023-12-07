@@ -20,7 +20,10 @@
           ようこそ、<%= current_customer.name %>さん!
         </div>
         <li class="nav-item mx-3">
-          <%= link_to 'マイページ', customers_path, class: "btn btn-info" %>
+          <%= link_to 'マイページ', customer_path(current_customer.id), class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to '会員一覧', customers_path, class: "btn btn-info" %>
         </li>
         <li class="nav-item mx-3">
           <%= link_to '投稿一覧', reviews_path, class: "btn btn-info" %>
