@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <h3>投稿一覧</h3>
+      <% @reviews.each do |review| %>
+        <div class="card", style="width: 18rem;">
+          <div class="card-body">
+            <%#= image_tag review.customer.get_image(80,80) %>
+            <%#= review.customer.name %>
+            <div class="card-title">
+              <%= review.title %>
+            </div>
+            <div class="card-subtitle">
+              <%= review.sub_title %>
+            </div>
+            <%= review.body %>
+            <%= review.venue_name %>
+            <%= review.body %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
