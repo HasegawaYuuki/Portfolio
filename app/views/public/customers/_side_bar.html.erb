@@ -1,16 +1,23 @@
 <div class="card ml-5 px-5">
   <div>
-    <%= image_tag @customer.get_image(100,100), style: "border-radius: 50%; object-fit:cover;" %>
-    <% if @customer === current_customer %>
+    <%= image_tag customer.get_image(100,100), style: "border-radius: 50%; object-fit:cover;" %>
+    <% if customer === current_customer %>
       <%= link_to "新規投稿", new_review_path, class:"btn btn-warning" %>
-      <%= link_to "会員情報編集", edit_customer_path(@customer.id), class:"btn btn-success" %>
+      <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-success" %>
     <% end %>
   </div>
   <div>
-    <p>ユーザー名：<%= @customer.name %></p>
+    <p>ユーザー名：<%= customer.name %></p>
+  </div>
+  <div>
+    <%= render "public/relationships/btn", customer: customer, options: { class: "follow-link btn btn-success"} %>
+  </div>
+  <div>
+    フォロー:<%= customer.followings.count %>人
+    フォロワー:<%= customer.followers.count %>人
   </div>
   <div>
     <p>自己紹介</p>
-    <%= @customer.introduction %>
+    <%= customer.introduction %>
   </div>
 </div>
