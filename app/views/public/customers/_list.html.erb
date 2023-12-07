@@ -1,0 +1,26 @@
+<h3>会員一覧</h3>
+<table>
+
+  <thead>
+    <tr>
+      <th></th>
+      <th>ユーザー名</th>
+      <th>フォロー数</th>
+      <th>フォロワー数</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= image_tag customer.get_image(80,80) %></td>
+        <td><%= customer.name %></td>
+        <td>フォロー<%#= customer.follows.count %></td>
+        <td>フォロワー<%#= customer.followers.count %></td>
+        <td><%= link_to "詳細ページ", customer_path(customer.id), class:"btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

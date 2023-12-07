@@ -3,9 +3,11 @@ class Public::CustomersController < ApplicationController
 
   def index
     @customer = current_customer
+    @customers = Customer.all
   end
 
   def show
+    @customer = current_customer
   end
 
   def edit

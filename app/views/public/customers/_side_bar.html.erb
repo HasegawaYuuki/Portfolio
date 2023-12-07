@@ -1,6 +1,14 @@
-<div class="card" style="width: 250px;">
-  <h3>サイドバー</h3>
+<div class="card ml-5 px-5">
   <div>
-    <%= image_tag @customer.get_image(100,100) %>
+    <%= image_tag @customer.get_image(100,100), style: "border-radius: 50%; object-fit:cover;" %>
+    <%= link_to "新規投稿", new_review_path, class:"btn btn-warning" %>
+    <%= link_to "会員情報編集", edit_customer_path(@customer.id), class:"btn btn-success" %>
+  </div>
+  <div>
+    <p>ユーザー名：<%= @customer.name %></p>
+  </div>
+  <div>
+    <p>自己紹介</p>
+    <%= @customer.introduction %>
   </div>
 </div>
