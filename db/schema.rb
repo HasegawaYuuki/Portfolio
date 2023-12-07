@@ -106,12 +106,14 @@ ActiveRecord::Schema.define(version: 2023_12_06_065506) do
     t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id", "review_id"], name: "index_taggings_on_tag_id_and_review_id", unique: true
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
