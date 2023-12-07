@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
     @customer = current_customer
@@ -7,7 +8,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
   end
 
   def edit
@@ -35,6 +36,13 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name, :introduction)
+  end
+  
+  def is_matching_login_user
+    customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to customer_path(current_customer.id)
+    end
   end
 
 end
