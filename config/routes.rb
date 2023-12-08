@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-      	get "follows" => "relationships#follows", as: "follows"
+      	get "followings" => "relationships#followings", as: "followings"
       	get "followers" => "relationships#followers", as: "followers"
     end
     resources :reviews
