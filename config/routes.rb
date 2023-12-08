@@ -25,9 +25,10 @@ Rails.application.routes.draw do
       	get "followings" => "relationships#followings", as: "followings"
       	get "followers" => "relationships#followers", as: "followers"
     end
-    resources :reviews
+    resources :reviews do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :review_comments
-    resources :favorites
     resources :tags
     resources :taggings
     root to: 'homes#top'
