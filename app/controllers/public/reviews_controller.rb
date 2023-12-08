@@ -21,8 +21,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
-    @reviews = Review.find(params[:id])
-    @customer = @reviews.customer
+    @review = Review.find(params[:id])
+    @customer = @review.customer
   end
 
   def edit

@@ -5,17 +5,19 @@
 
       <div class="card", style="width: 18rem;">
         <div class="card-body">
-          <%#= image_tag review.customer.get_image(80,80) %>
+          <%= image_tag @customer.get_image(80,80) %>
           <%= @customer.name %>
+          <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
+          <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger" %>
           <div class="card-title">
-            <%= @reviews.title %>
+            <%= @review.title %>
           </div>
           <div class="card-subtitle">
-            <%= @reviews.sub_title %>
+            <%= @review.sub_title %>
           </div>
-          <%= @reviews.body %>
-          <%= @reviews.venue_name %>
-          <%= @reviews.tag %>
+          <%= @review.body %>
+          <%= @review.venue_name %>
+          <%= @review.tag %>
         </div>
       </div>
 

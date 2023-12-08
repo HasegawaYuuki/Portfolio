@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  belongs_to :customer
 
   def save_tags(tag_list)
     #タグが存在していれば、タグの名前を配列として全て取得
