@@ -7,7 +7,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     # 受け取った値を,で区切って配列にする
-    tag_list = params[:review][:name].split(',')
+    tag_list = params[:review][:tag_id].split(',')
     if @review.save
       @review.save_tags(tag_list)
       redirect_to reviews_path, notice:'投稿が完了しました'
@@ -18,11 +18,13 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    @tag_list = Tag.all
   end
 
   def show
     @review = Review.find(params[:id])
     @customer = @review.customer
+    @tags = @review.tags
   end
 
   def edit
@@ -33,13 +35,18 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.customer_id = current_customer.id
-    # 受け取った値を,で区切って配列にする
-    tag_list = params[:review][:name].split(',')
+    #受け取った値を,で区切って配列にする
+    tag_list = params[:review][:tag_id].split(',')
     if @review.update(review_params)
-      @review.save_tags(tag_list)
-      redirect_to reviews_path, notice:'投稿が完了しました'
+      @old_relations=Tagging.where(review_id: @review.id)
+      #それらを取り出し、消す。消し終わる
+      @old_relations.each do |relation|
+      relation.delete
+      end
+       @review.save_tags(tag_list)
+      redirect_to reviews_path, notice:'編集が完了しました'
     else
-      render :new
+      render :edit
     end
   end
 

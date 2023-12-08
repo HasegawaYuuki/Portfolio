@@ -3,7 +3,7 @@
     <div class="col">
       <h3>投稿詳細</h3>
 
-      <div class="card", style="width: 18rem;">
+      <div class="card">
         <div class="card-body">
           <%= image_tag @customer.get_image(80,80) %>
           <%= @customer.name %>
@@ -17,7 +17,9 @@
           </div>
           <%= @review.body %>
           <%= @review.venue_name %>
-          <%= @review.tag %>
+          <% @tags.each do |tag| %>
+            <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
+          <% end %>
         </div>
       </div>
 
