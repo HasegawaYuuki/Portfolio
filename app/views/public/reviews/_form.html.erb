@@ -8,7 +8,7 @@
   <label>会場名</label>
   <%= f.text_field :venue_name, class: 'form-control review_venue_name' %>
   <label>タグ(,で区切ると複数タグ登録できます)</label>
-  <%= f.text_field :name,value: tag_list, class: 'form-control review_tag' %>
+  <%= f.text_field :tag,value: tag_list, class: 'form-control review_tag' %>
   <% if review.new_record? %>
     <%= f.submit '新規作成', class: "btn btn-success mt-4" %>
   <% else %>
