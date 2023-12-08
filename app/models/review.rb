@@ -1,12 +1,13 @@
 class Review < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  
-  def save_tags(tags)
+  belongs_to :customer
+
+  def save_tags(tag_list)
     #タグが存在していれば、タグの名前を配列として全て取得
-    current_tags = self.tags.pluck(:name) unless self.tas.nil?
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?
     #現在取得したタグから送られてきたタグを除いてoldtagとする
-    old_tag = current_tags - tags
+    old_tags = current_tags - tags
     #送信されてきたタグから現在存在するタグを除いたタグをnewとする
     new_tags = tags - current_tags
     #古いタグを消す

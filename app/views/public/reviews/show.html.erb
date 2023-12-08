@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h3>投稿詳細</h3>
+
+      <div class="card", style="width: 18rem;">
+        <div class="card-body">
+          <%= image_tag @customer.get_image(80,80) %>
+          <%= @customer.name %>
+          <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
+          <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger" %>
+          <div class="card-title">
+            <%= @review.title %>
+          </div>
+          <div class="card-subtitle">
+            <%= @review.sub_title %>
+          </div>
+          <%= @review.body %>
+          <%= @review.venue_name %>
+          <%= @review.tag %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
