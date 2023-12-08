@@ -1,8 +1,18 @@
 class Review < ApplicationRecord
+  belongs_to :customer
+  has_many :review_comments, dependent: :destroy
+  
+  #いいね機能
+  has_many :favorites, dependent: :destroy
+  
+  def favorited_by?(customer)
+   favorites.exists?(customer_id: customer.id)
+  end
+  
+  #タグ機能
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  belongs_to :customer
-
+  
   def save_tags(tag_list)
     #タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
