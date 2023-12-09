@@ -11,10 +11,7 @@
             <% end %>
             <%= link_to review_path(review.id) do %>
               <div class="card-title">
-                <%= review.title %>
-              </div>
-              <div class="card-subtitle">
-                <%= review.sub_title %>
+                <%= review.title %><%= review.sub_title %><%= render "public/favorites/view", review: review %>
               </div>
               <%= review.body %>
               <%= review.venue_name %>

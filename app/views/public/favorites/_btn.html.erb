@@ -1,0 +1,9 @@
+<% if review.favorited_by?(current_customer) %>
+  <%= link_to review_favorites_path(review), method: :delete do %>
+    <%= review.favorites.count %><i class="fa-solid fa-bookmark" aria-hidden="true" style="color: black;"></i>
+  <% end %>
+<% else %>
+  <%= link_to review_favorites_path(review), method: :post do %>
+    <%= review.favorites.count %><i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+  <% end %>
+<% end %>

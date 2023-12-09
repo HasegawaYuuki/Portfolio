@@ -20,6 +20,7 @@
           <% @tags.each do |tag| %>
             <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
           <% end %>
+          <%= render "public/favorites/btn", review: @review %>
         </div>
       </div>
 
