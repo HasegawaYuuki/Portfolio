@@ -26,7 +26,9 @@
         </div>
       </div>
 
-      <%= render "public/review_comments/comment", review: @review %>
+      <div id="review_comment">
+        <%= render "public/review_comments/comment", review: @review %>
+      </div>
       <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
 
     </div>
