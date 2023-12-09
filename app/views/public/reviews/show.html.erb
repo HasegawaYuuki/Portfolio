@@ -10,13 +10,15 @@
           <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
           <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger" %>
           <div class="card-title">
-            <%= @review.title %>
+            <%= @review.spoiler ? 'ネタバレなし' : 'ネタバレあり' %>
           </div>
           <div class="card-subtitle">
+            <%= @review.title %>
             <%= @review.sub_title %>
           </div>
           <%= @review.body %>
           <%= @review.venue_name %>
+
           <% @tags.each do |tag| %>
             <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
           <% end %>
