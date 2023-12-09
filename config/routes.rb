@@ -22,13 +22,13 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-      	get "followings" => "relationships#followings", as: "followings"
-      	get "followers" => "relationships#followers", as: "followers"
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
     end
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
+      resources :review_comments, only: [:create, :destroy]
     end
-    resources :review_comments
     resources :tags
     resources :taggings
     root to: 'homes#top'

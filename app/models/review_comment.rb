@@ -1,6 +1,6 @@
 class ReviewComment < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :customer
   belongs_to :review
 
   #parentは返信対象となるコメント
