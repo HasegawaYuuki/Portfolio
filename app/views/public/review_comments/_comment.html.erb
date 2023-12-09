@@ -1,4 +1,4 @@
-<p>コメント一覧</p>(#{comments.count}件)
+<p>コメント一覧  <%= review.review_comments.count %>件</p>
 <table class="table">
   <tbody>
     <% review.review_comments.each do |review_comment| %>
