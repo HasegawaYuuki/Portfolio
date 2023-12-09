@@ -29,7 +29,6 @@ class Public::ReviewsController < ApplicationController
     @review_comment = ReviewComment.new
     #コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @review.review_comments.order(created_at: :desc)
-    @comment_reply = @review.comments.new
   end
 
   def edit
