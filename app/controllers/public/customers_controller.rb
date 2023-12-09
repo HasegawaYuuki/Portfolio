@@ -19,10 +19,10 @@ class Public::CustomersController < ApplicationController
     customer = current_customer
     if customer.update(customer_params)
       flash[:edit] = "登録情報変更に成功しました。"
-      redirect_to customers_path
+      redirect_to customer_path
     else
       flash[:edit_danger] = "登録情報変更に失敗しました。"
-      redirect_to edit_customers_path
+      redirect_to customer_path
     end
   end
 
@@ -35,9 +35,9 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :introduction)
+    params.require(:customer).permit(:name, :introduction, :image, :email)
   end
-  
+
   def is_matching_login_user
     customer = Customer.find(params[:id])
     unless customer.id == current_customer.id
