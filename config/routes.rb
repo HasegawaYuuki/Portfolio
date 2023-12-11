@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
         get "followers" => "relationships#followers", as: "followers"
+        member do
+          get :favorite_index
+        end
     end
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
