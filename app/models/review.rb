@@ -33,4 +33,6 @@ class Review < ApplicationRecord
       self.tags << new_review_tag
    end
   end
+
+  enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
 end

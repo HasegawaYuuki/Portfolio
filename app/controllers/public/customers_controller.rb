@@ -9,6 +9,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @spoiler_review = @customer.reviews.where(status: :spoiler)
+    @not_spoiler_review = @customer.reviews.where(status: :not_spoiler)
+    @draft_review = @customer.reviews.where(status: :draft)
   end
 
   def edit
@@ -24,6 +27,13 @@ class Public::CustomersController < ApplicationController
       flash[:edit_danger] = "登録情報変更に失敗しました。"
       redirect_to customer_path
     end
+  end
+
+  def favorite_index
+    @customer = Customer.find(params[:id])
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
+    @favorite_reviews = Review.find(favorites)
+    #@review = Review.find(params[:id])
   end
 
   def withdraw

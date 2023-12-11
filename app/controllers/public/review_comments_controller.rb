@@ -6,15 +6,15 @@ class Public::ReviewCommentsController < ApplicationController
     comment.review_id = @review.id
     comment.save
     flash.now[:notice] = "コメントの投稿に成功しました。"
-    redirect_back(fallback_location: review_path(@review.id))
+    #redirect_back(fallback_location: review_path(@review.id))
   end
 
   def destroy
-    @review = Review.find(params[:id])
+    @review = Review.find(params[:review_id])
     @comment = ReviewComment.find(params[:id])
     @comment.destroy
     flash.now[:notice] = "コメントを削除しました。"
-    redirect_back(fallback_location: review_path(@review.id))
+    #redirect_back(fallback_location: review_path(@review.id))
   end
 
   private
