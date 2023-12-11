@@ -13,8 +13,12 @@
     <%= render "public/relationships/btn", customer: customer, options: { class: "follow-link btn btn-success"} %>
   </div>
   <div>
-    フォロー:<%= customer.followings.count %>人
-    フォロワー:<%= customer.followers.count %>人
+    <%= link_to customer_followings_path do %>
+      フォロー:<%= customer.followings.count %>人
+    <% end %>
+    <%= link_to customer_followers do %>
+      フォロワー:<%= customer.followers.count %>人
+    <% end %>
   </div>
   <div>
     <p>自己紹介</p>
