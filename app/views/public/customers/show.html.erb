@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col">
-      <%= render 'public/customers/side_bar', customer: @customer %>
+    <div class="col-4">
+      <%= render 'public/customers/side_bar', customer: @customer,reviews: @reviews %>
     </div>
-    <div class="col">
-      <%= render 'public/customers/tab' %>
+    <div class="col-7 offset-1">
+      <%= render 'public/customers/customer_tab', spoiler_review: @spoiler_review,not_spoier_review: @not_spoiler_review, draft_review: @draft_review %>
     </div>
   </div>
 </div>

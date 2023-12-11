@@ -1,0 +1,25 @@
+<!--ネタバレあり @false_review = @customer.reviews.where(spoiler: false)-->
+
+<div class="row row-cols-4">
+  <% spoiler_review.each do |spoiler_review| %>
+    <div class="col mb-4">
+      <div class="card", style="width: 18rem;">
+        <div class="card-body">
+          <%= link_to customer_path(spoiler_review.customer.id) do %>
+            <%= image_tag spoiler_review.customer.get_image(80,80) %>
+            <%= spoiler_review.customer.name %>
+          <% end %>
+          <%= link_to review_path(spoiler_review.id) do %>
+            <div class="card-title">
+              <%= spoiler_review.title %><%= spoiler_review.sub_title %><%= render "public/favorites/view", review: spoiler_review %>
+            </div>
+            <%= spoiler_review.body %>
+            <%= spoiler_review.venue_name %>
+          <% end %>
+          <i class="fa-solid fa-tag"></i>
+          <%= spoiler_review.tags.map(&:name).join(', ') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
