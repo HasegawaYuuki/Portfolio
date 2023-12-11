@@ -29,11 +29,11 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  #ブックマーク一覧
   def favorite_index
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
     @favorite_reviews = Review.find(favorites)
-    #@review = Review.find(params[:id])
   end
 
   def withdraw
