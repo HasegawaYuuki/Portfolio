@@ -1,26 +1,10 @@
 <div class="container-fluid">
   <h3 class="mt-5">投稿一覧</h3>
-  <div class="row row-cols-4">
-    <% @reviews.each do |review| %>
-      <div class="col mb-4">
-        <div class="card", style="width: 18rem;">
-          <div class="card-body">
-            <%= link_to customer_path(review.customer.id) do %>
-              <%= image_tag review.customer.get_image(80,80) %>
-              <%= review.customer.name %>
-            <% end %>
-            <%= link_to review_path(review.id) do %>
-              <div class="card-title">
-                <%= review.title %><%= review.sub_title %><%= render "public/favorites/view", review: review %>
-              </div>
-              <%= review.body %>
-              <%= review.venue_name %>
-            <% end %>
-            <i class="fa-solid fa-tag"></i>
-            <%= review.tags.map(&:name).join(', ') %>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="col">
+
+      <%= render 'public/customers/tab', true_review: @true_review,false_review: @false_review %>
+
+    </div>
   </div>
 </div>

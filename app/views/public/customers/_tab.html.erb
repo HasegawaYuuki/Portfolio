@@ -5,28 +5,21 @@
       <div class="tabs d-flex justify-content-between align-items-center">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#published">ネタバレなし</a>
+            <a class="nav-link active" data-toggle="tab" href="#notspoile">ネタバレなし</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#draft">ネタバレあり</a>
+            <a class="nav-link" data-toggle="tab" href="#spoile">ネタバレあり</a>
           </li>
         </ul>
       </div>
       
       <div class="tab-content">
-        
-        <div id="published" class="tab-pane fade show active">
-          <%# @published_posts.each do |post| %>
-            <%#= render "mypost", post: post %>
-          <%# end %>
+        <div id="notspoile" class="tab-pane fade show active">
+          <%= render "public/reviews/true_index", true_review: true_review %>
         </div>
-  
-        <div id="draft" class="tab-pane fade">
-          <%# @draft_posts.each do |post| %>
-            <%#= render "mypost", post: post %>
-          <%# end %>
+        <div id="spoile" class="tab-pane fade">
+          <%= render "public/reviews/false_index", false_review: false_review %>
         </div>
-        
       </div>
       
     </div>

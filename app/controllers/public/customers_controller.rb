@@ -9,6 +9,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @true_review = @customer.reviews.where(spoiler: true)
+    @false_review = @customer.reviews.where(spoiler: false)
   end
 
   def edit

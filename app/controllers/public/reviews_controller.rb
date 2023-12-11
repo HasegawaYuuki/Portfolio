@@ -17,11 +17,13 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
     @tag_list = Tag.all
+    @true_review = Review.where(spoiler: true)
+    @false_review = Review.where(spoiler: false)
   end
 
   def show
+    @reviews = Review.all
     @review = Review.find(params[:id])
     @customer = @review.customer
     @tags = @review.tags

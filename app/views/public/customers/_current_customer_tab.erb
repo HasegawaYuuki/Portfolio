@@ -5,38 +5,38 @@
       <div class="tabs d-flex justify-content-between align-items-center">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#published">ネタバレなし</a>
+            <a class="nav-link active" data-toggle="tab" href="#notspoiler">ネタバレなし</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#draft">ネタバレあり</a>
+            <a class="nav-link" data-toggle="tab" href="#spoiler">ネタバレあり</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#unpublished">下書き</a>
+            <a class="nav-link" data-toggle="tab" href="#draft">下書き</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#unpublished">非公開</a>
+            <a class="nav-link" data-toggle="tab" href="#private">非公開</a>
           </li>
         </ul>
       </div>
 
       <div class="tab-content">
 
-        <div id="published" class="tab-pane fade show active">
-          <%# @published_posts.each do |post| %>
-            <%#= render "mypost", post: post %>
-          <%# end %>
+        <div id="notspoiler" class="tab-pane fade show active">
+          ネタバレなし
+          <%= render "public/reviews/true_index", true_review: true_review %>
+        </div>
+
+        <div id="spoiler" class="tab-pane fade">
+          ネタバレあり
+          <%= render "public/reviews/false_index", false_review: false_review %>
         </div>
 
         <div id="draft" class="tab-pane fade">
-          <%# @draft_posts.each do |post| %>
-            <%#= render "mypost", post: post %>
-          <%# end %>
+          下書き
         </div>
 
-        <div id="unpublished" class="tab-pane fade">
-          <%# @unpublished_posts.each do |post| %>
-            <%#= render "mypost", post: post %>
-          <%# end %>
+        <div id="private" class="tab-pane fade">
+          非公開
         </div>
 
       </div>
