@@ -2,8 +2,8 @@ ja:
   enums:
     review:
       status:
-        not_release: "非公開"
-        release: "公開中"
+        not_spoiler: "ネタバレなし"
+        spoiler: "ネタバレあり"
         draft: "下書き"
   activerecord:
     errors:
@@ -22,7 +22,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -48,7 +48,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月

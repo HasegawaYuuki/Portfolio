@@ -9,17 +9,25 @@ class Public::ReviewsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.save
-      @review.save_tags(tag_list)
-      redirect_to reviews_path, notice:'投稿が完了しました'
+      @old_relations=Tagging.where(review_id: @review.id)
+      #それらを取り出し、消す。消し終わる
+      @old_relations.each do |relation|
+      relation.delete
+      end
+       @review.save_tags(tag_list)
+      redirect_to review_path(@review.id), notice:'投稿が公開されました'
+    elsif @review.draft?
+      redirect_to customer_path(current_customer.id), notice:'下書きが保存されました'
     else
       render :new
     end
+
   end
 
   def index
     @tag_list = Tag.all
-    @true_review = Review.where(spoiler: true)
-    @false_review = Review.where(spoiler: false)
+    @spoiler_review = Review.where(status: :spoiler)
+    @not_spoiler_review = Review.where(status: :not_spoiler)
   end
 
   def show
@@ -41,6 +49,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.customer_id = current_customer.id
+
     #受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.update(review_params)
@@ -50,22 +59,25 @@ class Public::ReviewsController < ApplicationController
       relation.delete
       end
        @review.save_tags(tag_list)
-      redirect_to reviews_path, notice:'編集が完了しました'
+      redirect_to review_path(@review.id), notice:'編集が完了しました'
+    elsif @review.draft?
+      redirect_to customer_path(current_customer.id), notice:'下書きが保存されました'
     else
       render :edit
     end
+
   end
 
   def destroy
     review = Review.find(params[:id])
     review.destroy
-    redirect_to reviews_path
+    redirect_to customer_path(current_customer.id)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :spoiler, :status)
+    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :status)
   end
 
 end

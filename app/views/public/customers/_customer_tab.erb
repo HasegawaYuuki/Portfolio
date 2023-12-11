@@ -13,9 +13,6 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#draft">下書き</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#private">非公開</a>
-          </li>
         </ul>
       </div>
 
@@ -23,20 +20,17 @@
 
         <div id="notspoiler" class="tab-pane fade show active">
           ネタバレなし
-          <%= render "public/reviews/true_index", true_review: true_review %>
+          <%= render "public/reviews/not_spoiler_review", not_spoiler_review: @not_spoiler_review %>
         </div>
 
         <div id="spoiler" class="tab-pane fade">
           ネタバレあり
-          <%= render "public/reviews/false_index", false_review: false_review %>
+          <%= render "public/reviews/spoiler_review", spoiler_review: @spoiler_review %>
         </div>
 
         <div id="draft" class="tab-pane fade">
           下書き
-        </div>
-
-        <div id="private" class="tab-pane fade">
-          非公開
+          <%= render "public/reviews/draft_review", draft_review: @draft_review %>
         </div>
 
       </div>

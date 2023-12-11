@@ -10,7 +10,7 @@
           <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
           <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger" %>
           <div class="card-title">
-            <%= @review.spoiler ? 'ネタバレなし' : 'ネタバレあり' %>
+            <%= @review.status_i18n %>
           </div>
           <div class="card-subtitle">
             <%= @review.title %>
