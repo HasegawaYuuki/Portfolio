@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>ブックマーク一覧</h3>
+  <div class="row row-cols-4">
+    <% @favorite_reviews.each do |favorite_review| %>
+      <div class="col mb-4">
+        <div class="card", style="width: 18rem;">
+          <div class="card-body">
+            <%= link_to customer_path(favorite_review.customer.id) do %>
+              <%= image_tag favorite_review.customer.get_image(80,80) %>
+              <%= favorite_review.customer.name %>
+            <% end %>
+            <%= link_to review_path(favorite_review.id) do %>
+              <div class="card-title">
+                <%= favorite_review.title %><%= favorite_review.sub_title %><%= render "public/favorites/view", review: favorite_review %>
+              </div>
+              <%= favorite_review.body %>
+              <%= favorite_review.venue_name %>
+            <% end %>
+            <i class="fa-solid fa-tag"></i>
+            <%= favorite_review.tags.map(&:name).join(', ') %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
