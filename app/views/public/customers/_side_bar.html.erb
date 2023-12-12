@@ -4,7 +4,7 @@
     <% if customer === current_customer %>
       <%= link_to "新規投稿", new_review_path, class:"btn btn-warning" %>
       <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-success" %>
-      <%= link_to "ブックマーク一覧", favorite_index_customer_path, class:"btn btn-success" %>
+      <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-success" %>
     <% end %>
   </div>
   <div>
@@ -14,8 +14,12 @@
     <%= render "public/relationships/btn", customer: customer, options: { class: "follow-link btn btn-success"} %>
   </div>
   <div>
-    フォロー:<%= customer.followings.count %>人
-    フォロワー:<%= customer.followers.count %>人
+    <%= link_to customer_followings_path(customer.id) do %>
+      フォロー:<%= customer.followings.count %>人
+    <% end %>
+    <%= link_to customer_followers_path(customer.id) do %>
+      フォロワー:<%= customer.followers.count %>人
+    <% end %>
   </div>
   <div>
     <p>自己紹介</p>
