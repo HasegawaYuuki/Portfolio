@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <h3>投稿詳細</h3>
+
+      <div class="card">
+        <div class="card-body">
+          <%= image_tag @customer.get_image(80,80) %>
+          <%= @customer.name %>
+          <%#= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
+          <div class="card-title">
+            <%= @review.status_i18n %>
+          </div>
+          <div class="card-subtitle">
+            <%= @review.title %>
+            <%= @review.sub_title %>
+          </div>
+          <%= @review.body %>
+          <%= @review.venue_name %>
+
+          <% @tags.each do |tag| %>
+            <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
+          <% end %>
+          <!--<div id="favorite_btn_<%#= @review.id %>">-->
+            <%#= render "public/favorites/btn", review: @review %>
+          <!--</div>-->
+        </div>
+      </div>
+
+      <div id="review_comment">
+        <%= render "admin/review_comments/comment", review: @review %>
+      </div>
+
+    </div>
+  </div>
+</div>

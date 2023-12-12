@@ -1,0 +1,16 @@
+<p>コメント一覧  <%= review.review_comments.count %>件</p>
+<table class="table">
+  <tbody>
+    <% review.review_comments.each do |review_comment| %>
+    <tr>
+      <td>
+      <%= image_tag review_comment.customer.get_image(50,50) %><br />
+      <%= review_comment.customer.name %>
+      </td>
+      <td>
+      <%= review_comment.comment %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

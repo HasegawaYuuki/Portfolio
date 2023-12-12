@@ -1,26 +1,13 @@
 <h3>会員一覧</h3>
-<table>
-
-  <thead>
-    <tr>
-      <th></th>
-      <th>ユーザー名</th>
-      <th>フォロー数</th>
-      <th>フォロワー数</th>
-      <th></th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-
+<table class="table">
   <tbody>
     <% customers.each do |customer| %>
       <tr>
         <td><%= image_tag customer.get_image(80,80) %></td>
         <td><%= customer.name %></td>
-        <td>フォロー<%= customer.followings.count %></td>
-        <td>フォロワー<%= customer.followers.count %></td>
-        <td><%= render "public/relationships/btn", customer: customer, options: { class: "follow-link btn btn-success" } %></td>
-        <td><%= link_to "詳細ページ", customer_path(customer.id), class:"btn btn-success" %></td>
+        <td>フォロー<%= customer.followings.count %>人</td>
+        <td>フォロワー<%= customer.followers.count %>人</td>
+        <td><%= link_to "詳細ページ", admin_customer_path(customer.id), class:"btn btn-outline-success" %></td>
       </tr>
     <% end %>
   </tbody>
