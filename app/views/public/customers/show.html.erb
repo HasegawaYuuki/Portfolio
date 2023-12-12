@@ -4,7 +4,11 @@
       <%= render 'public/customers/side_bar', customer: @customer,reviews: @reviews %>
     </div>
     <div class="col-7 offset-1">
-      <%= render 'public/customers/customer_tab', spoiler_review: @spoiler_review,not_spoier_review: @not_spoiler_review, draft_review: @draft_review %>
+      <% if @customer === current_customer %>
+        <%= render 'public/customers/customer_tab', spoiler_review: @spoiler_review,not_spoier_review: @not_spoiler_review, draft_review: @draft_review %>
+      <% else %>
+        <%= render 'public/customers/tab', spoiler_review: @spoiler_review,not_spoier_review: @not_spoiler_review %>
+      <% end %>
     </div>
   </div>
 </div>
