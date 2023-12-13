@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 2023_12_06_065506) do
     t.string "sub_title"
     t.text "body", null: false
     t.string "venue_name", null: false
-    t.boolean "spoiler", default: false, null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

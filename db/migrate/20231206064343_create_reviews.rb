@@ -6,8 +6,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :sub_title
       t.text :body, null: false
       t.string :venue_name, null: false
-      t.boolean :spoiler, null: false, default: false
       t.integer :status, null: false, default: 0
+      
 
       t.timestamps
     end
