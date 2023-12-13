@@ -31,7 +31,7 @@ class Review < ApplicationRecord
     new_tags.each do |new|
       new_review_tag = Tag.find_or_create_by(name: new)
       self.tags << new_review_tag
-   end
+    end
   end
 
   enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
