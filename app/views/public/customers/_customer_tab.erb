@@ -19,17 +19,14 @@
       <div class="tab-content">
 
         <div id="notspoiler" class="tab-pane fade show active">
-          ネタバレなし
           <%= render "public/reviews/not_spoiler_review", not_spoiler_review: @not_spoiler_review %>
         </div>
 
         <div id="spoiler" class="tab-pane fade">
-          ネタバレあり
           <%= render "public/reviews/spoiler_review", spoiler_review: @spoiler_review %>
         </div>
 
         <div id="draft" class="tab-pane fade">
-          下書き
           <%= render "public/reviews/draft_review", draft_review: @draft_review %>
         </div>
 
