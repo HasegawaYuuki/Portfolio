@@ -1,11 +1,22 @@
 class Review < ApplicationRecord
   belongs_to :customer
   has_many :review_comments, dependent: :destroy
-  
+
   validates :title, presence: true
   validates :body, presence: true
   validates :venue_name, presence: true
   validates :status, presence: true
+
+  #ActiveStorage
+  has_many_attached :review_image
+
+  def get_review_image(width,height)
+    unless review_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      review_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
+    end
+    review_image.variant(resize_to_limit: [width, height]).processed
+  end
 
   #いいね機能
   has_many :favorites, dependent: :destroy
@@ -38,6 +49,6 @@ class Review < ApplicationRecord
       self.tags << new_review_tag
     end
   end
-  
+
   enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
 end

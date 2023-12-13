@@ -11,6 +11,9 @@
               <br />
               <%= not_spoiler_review.customer.name %>
             <% end %>
+            <% if not_spoiler_review.review_image.attached? %>
+              <%= image_tag not_spoiler_review.get_review_image(80,80) %>
+            <% end %>
             <%= link_to review_path(not_spoiler_review.id) do %>
               <div class="card-title">
                 <%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %><%= render "public/favorites/view", review: not_spoiler_review %>

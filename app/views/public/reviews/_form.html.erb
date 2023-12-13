@@ -1,4 +1,4 @@
-<%= form_with model: review do |f| %>
+<%= form_with model: review, html: { multipart: true } do |f| %>
 
   <label>公演名</label>
   <%= f.text_field :title, class: 'form-control review_title' %>
@@ -15,7 +15,12 @@
   <label>タグ(,で区切ると複数タグ登録できます)</label>
   <%= f.text_field :tag_id,value: tag_list, class: 'form-control review_tag' %>
 
-  <label>ネタバレ有無・非公開</label><br />
+  <label>画像</label>
+  <%= f.file_field :review_image, accept: "image/*", multiple: true %>
+  <br />
+
+  <label>ネタバレ有無・非公開</label>
+  <br />
   <%= f.radio_button :status, Review.statuses.key(0) %>
   <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
   <%= f.radio_button :status, Review.statuses.key(1) %>
