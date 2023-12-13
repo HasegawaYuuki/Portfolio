@@ -13,6 +13,9 @@
           <%= link_to '投稿一覧', admin_reviews_path, class: "btn btn-info" %>
         </li>
         <li class="nav-item mx-3">
+          <%= link_to 'コメント一覧', admin_review_comments_path, class: "btn btn-info" %>
+        </li>
+        <li class="nav-item mx-3">
           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-info" %>
         </li>
       <% elsif customer_signed_in? %>

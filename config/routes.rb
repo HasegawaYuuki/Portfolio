@@ -14,6 +14,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :relationships, only: [] do
+      member do
+        get :followings
+        get :followers
+      end
+    end
     resources :reviews, only: [:index, :show]
     resources :review_comments
     root to: 'homes#top'
