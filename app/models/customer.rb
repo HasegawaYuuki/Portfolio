@@ -11,6 +11,14 @@ class Customer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :review_comments, dependent: :destroy
 
+  #ゲストログイン機能
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "ゲストユーザー"
+    end
+  end
+
   #ActiveStorage
   has_one_attached :image
 
