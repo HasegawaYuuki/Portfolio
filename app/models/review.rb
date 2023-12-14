@@ -7,7 +7,7 @@ class Review < ApplicationRecord
   validates :venue_name, presence: true
   validates :status, presence: true
 
-  #ActiveStorage
+  # ActiveStorage
   has_many_attached :review_image
 
   # def get_review_image(width,height)
@@ -18,14 +18,14 @@ class Review < ApplicationRecord
   #   review_image.variant(resize_to_limit: [width, height]).processed
   # end
 
-  #いいね機能
+  # いいね機能
   has_many :favorites, dependent: :destroy
 
   def favorited_by?(customer)
    favorites.exists?(customer_id: customer.id)
   end
 
-  #タグ機能
+  # タグ機能
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
@@ -47,6 +47,14 @@ class Review < ApplicationRecord
     new_tags.each do |new|
       tags = Tag.find_or_create_by(name: new)
       self.tags << tags
+    end
+  end
+
+  # 検索機能のためのメソッド
+  def self.looks(search, word)
+    if search == "partial_match"
+      @spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
+      @not_spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
     end
   end
 
