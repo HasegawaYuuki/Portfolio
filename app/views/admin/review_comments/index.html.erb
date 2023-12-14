@@ -1,24 +1,32 @@
 <div class="container mt-5">
-<h3>レビューコメント一覧</h3>
-<table class="table mt-3">
-  <tr>
-    <th>名前</th>
-    <th>公演名</th>
-    <th>コメント</th>
-    <th>投稿日</th>
-    <th></th>
-  </tr>
-<% @review_comments.each do |review_comment| %>
-  <tr>
-    <td><%= @customers.find(review_comment.customer_id).name %></td>
-    <td><%= @reviews.find(review_comment.review_id).title %></td>
-    <td><%= review_comment.comment %></td>
-    <td><%= review_comment.created_at.strftime('%Y/%m/%d') %></td>
-    <td>
-    <%= link_to '削除', admin_review_comment_path(review_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-danger" %>
-    </td>
-  </tr>
-<% end %>
-</table>
-
+  <h3>コメント一覧</h3>
+  <section>
+    <div class="flex-row">
+      <div class="flex-comment">ユーザー名</div>
+      <div class="flex-comment">公演名</div>
+      <div class="flex-comment">コメント</div>
+      <div class="flex-comment">投稿日</div>
+      <div class="flex-comment"></div>
+    </div>
+    
+    <% @review_comments.each do |review_comment| %>
+      <div class="flex-row">
+        <div class="flex-comment">
+          <%= @customers.find(review_comment.customer_id).name %>
+        </div>
+        <div class="flex-comment">
+          <%= @reviews.find(review_comment.review_id).title %>
+        </div>
+        <div class="flex-comment">
+          <%= review_comment.comment %>
+        </div>
+        <div class="flex-comment">
+          <%= review_comment.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="flex-comment">
+          <%= link_to '削除', admin_review_comment_path(review_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </section>
 </div>
