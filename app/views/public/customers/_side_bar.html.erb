@@ -1,19 +1,25 @@
-<div class="card ml-5 px-5">
+<div class="card px-5">
+  <section>
+    <div class="flex-row">
+      <div class="flex-side_bar">
+        <%= image_tag customer.get_image(150,10500) %>
+      </div>
+      <div class="flex-side_bar">
+        <% if customer === current_customer %>
+          <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-warning mt-2" %>
+          <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-outline-success mt-2" %>
+          <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-outline-success mt-2" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
   <div>
-    <%= image_tag customer.get_image(100,100), style: "border-radius: 50%; object-fit:cover;" %>
-    <% if customer === current_customer %>
-      <%= link_to "新規投稿", new_review_path, class:"btn btn-warning" %>
-      <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-success" %>
-      <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-success" %>
-    <% end %>
+    <p class="mt-2">ユーザー名：<%= customer.name %></p>
   </div>
   <div>
-    <p>ユーザー名：<%= customer.name %></p>
+    <%= render "public/relationships/btn", customer: customer %>
   </div>
-  <div>
-    <%= render "public/relationships/btn", customer: customer, options: { class: "follow-link btn btn-success"} %>
-  </div>
-  <div>
+  <div class="mt-2">
     <%= link_to customer_followings_path(customer.id) do %>
       フォロー:<%= customer.followings.count %>人
     <% end %>
@@ -22,7 +28,7 @@
     <% end %>
   </div>
   <div>
-    <p>自己紹介</p>
+    <p class="mt-2">自己紹介</p>
     <%= customer.introduction %>
   </div>
 </div>

@@ -28,6 +28,7 @@ class Public::ReviewsController < ApplicationController
     @tag_list = Tag.all
     @spoiler_review = Review.where(status: :spoiler)
     @not_spoiler_review = Review.where(status: :not_spoiler)
+    @customer = current_customer
   end
 
   def show
@@ -77,7 +78,7 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :status)
+    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :status, review_image: [])
   end
 
 end

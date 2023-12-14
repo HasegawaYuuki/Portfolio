@@ -1,1 +1,62 @@
-@use '~bootstrap/scss/bootstrap';
+$primary: #0073a8;
+$secondary: #d4d9df;
+$success: #2cb4ad; //ナイルブルー
+$danger: #b33e5c; //ワインレッド
+$warning: #ffffb7;
+$info: #c1c1ff;
+$light: #a22041; //濃い紅
+$dark: #a8a8ff;
+
+@import '~bootstrap/scss/bootstrap';
+
+.flex-row {
+  display: flex;
+  gap: 4px;
+}
+
+.flex-row+.flex-row {
+  margin-top: 4px;
+}
+
+.flex-item {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 4px;
+}
+
+.flex-item:nth-child(1) {
+  width: 80px;
+}
+
+.flex-item:nth-child(2) {
+  width: 160px;
+}
+
+.flex-item:nth-child(3) {
+  width: 120px;
+}
+
+.flex-item:nth-child(4) {
+  width: 130px;
+}
+
+.flex-item:nth-child(5) {
+  width: 140px;
+}
+
+.flex-item:nth-child(6) {
+  width: 130px;
+}
+
+.flex-side_bar {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 4px;
+}
+
+.flex-side_bar:nth-child(2) {
+
+  width: 170px;
+}

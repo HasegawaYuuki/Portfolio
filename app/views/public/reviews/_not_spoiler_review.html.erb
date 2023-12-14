@@ -11,16 +11,22 @@
               <br />
               <%= not_spoiler_review.customer.name %>
             <% end %>
-            <%= link_to review_path(not_spoiler_review.id) do %>
-              <div class="card-title">
-                <%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %><%= render "public/favorites/view", review: not_spoiler_review %>
-              </div>
-              <%= not_spoiler_review.body %>
-              <%= not_spoiler_review.venue_name %>
-            <% end %>
+            <%# if not_spoiler_review.review_image.attached? %>
+              <%#= image_tag not_spoiler_review.review_image.first.variant(resize: '50x50') %>
+            <%# end %>
+            <div class="card-title">
+              <%= link_to review_path(not_spoiler_review.id) do %>
+                <%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %>
+              <% end %>
+            </div>
+            <%= not_spoiler_review.body %>
+            <br />
+            会場名：<%= not_spoiler_review.venue_name %>
+
             <br />
             <i class="fa-solid fa-tag"></i>
             <%= not_spoiler_review.tags.map(&:name).join(', ') %>
+            <%= render "public/favorites/view", review: not_spoiler_review %>
           </div>
         </div>
       </div>

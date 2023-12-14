@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
   #コメント機能
   has_many :reviews, dependent: :destroy
   has_many :review_comments, dependent: :destroy
+  
+  validates :name, presence: true
 
   #ゲストログイン機能
   def self.guest
