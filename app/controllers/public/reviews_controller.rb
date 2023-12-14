@@ -28,6 +28,7 @@ class Public::ReviewsController < ApplicationController
     @tag_list = Tag.all
     @spoiler_review = Review.where(status: :spoiler)
     @not_spoiler_review = Review.where(status: :not_spoiler)
+    @customer = current_customer
   end
 
   def show

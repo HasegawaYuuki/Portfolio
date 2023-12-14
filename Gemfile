@@ -59,3 +59,4 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem "enum_help"
+gem 'mini_magick'
