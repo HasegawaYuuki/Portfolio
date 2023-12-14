@@ -3,21 +3,23 @@
 <div class="row row-cols-4">
   <% not_spoiler_review.each do |not_spoiler_review| %>
     <div class="col mb-4">
-      <div class="card", style="width: 18rem;">
-        <div class="card-body">
-          <%= link_to admin_customer_path(not_spoiler_review.customer.id) do %>
-            <%= image_tag not_spoiler_review.customer.get_image(80,80) %>
-            <%= not_spoiler_review.customer.name %>
-          <% end %>
-          <%= link_to admin_review_path(not_spoiler_review.id) do %>
-            <div class="card-title">
-              <%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %><%#= render "admin/favorites/view", review: not_spoiler_review %>
-            </div>
-            <%= not_spoiler_review.body %>
-            <%= not_spoiler_review.venue_name %>
-          <% end %>
-          <i class="fa-solid fa-tag"></i>
-          <%= not_spoiler_review.tags.map(&:name).join(', ') %>
+      <div class="card-deck">
+        <div class="card", style="width: 18rem;">
+          <div class="card-body">
+            <%= link_to admin_customer_path(not_spoiler_review.customer.id) do %>
+              <%= image_tag not_spoiler_review.customer.get_image(80,80) %>
+              <%= not_spoiler_review.customer.name %>
+            <% end %>
+            <%= link_to admin_review_path(not_spoiler_review.id) do %>
+              <div class="card-title">
+                <%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %><%#= render "admin/favorites/view", review: not_spoiler_review %>
+              </div>
+              <%= not_spoiler_review.body %>
+              <%= not_spoiler_review.venue_name %>
+            <% end %>
+            <i class="fa-solid fa-tag"></i>
+            <%= not_spoiler_review.tags.map(&:name).join(', ') %>
+          </div>
         </div>
       </div>
     </div>

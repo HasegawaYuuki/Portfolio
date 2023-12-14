@@ -1,7 +1,24 @@
-<div class="container">
-  <div class="row mt-5">
-    <div class="col">
-      <%= render 'admin/customers/list', customers: @customers %>
+<div class="container mt-5">
+  <h3>会員一覧</h3>
+  <section>
+    <% @customers.each do |customer| %>
+    <div class="flex-row">
+      <div class="flex-item">
+        <%= image_tag customer.get_image(80,80) %>
+      </div>
+      <div class="flex-item">
+        <%= customer.name %>
+      </div>
+      <div class="flex-item">
+        フォロー<%= customer.followings.count %>人
+      </div>
+      <div class="flex-item">
+        フォロワー<%= customer.followers.count %>人
+      </div>
+      <div class="flex-item">
+        <%= link_to "詳細ページ", admin_customer_path(customer.id), class:"btn btn-outline-success" %>
+      </div>
     </div>
-  </div>
+    <% end %>
+  </section>
 </div>

@@ -5,7 +5,6 @@
     <div class="col mb-4">
       <div class="card-deck">
         <div class="card", style="width: 18rem;">
-          
           <div class="card-body">
             <%= link_to customer_path(spoiler_review.customer.id) do %>
               <%= image_tag spoiler_review.customer.get_image(80,80) %>
@@ -16,16 +15,15 @@
               <%= link_to review_path(spoiler_review.id) do %>
                 <%= spoiler_review.title %><%= spoiler_review.sub_title %>
               <% end %>
+              <%= render "public/favorites/view", review: spoiler_review %>
             </div>
             
-            <%= spoiler_review.body %>
+            <%= spoiler_review.body.truncate(35) %>
             <br />
             <%= spoiler_review.venue_name %>
             <i class="fa-solid fa-tag"></i>
             <%= spoiler_review.tags.map(&:name).join(', ') %>
-            <%= render "public/favorites/view", review: spoiler_review %>
           </div>
-          
         </div>
       </div>
     </div>
