@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -47,6 +49,7 @@ Rails.application.routes.draw do
     resources :taggings
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+    get "search_tag" => "reviews#search_tag"
   end
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

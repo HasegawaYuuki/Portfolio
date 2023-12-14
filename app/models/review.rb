@@ -30,13 +30,13 @@ class Review < ApplicationRecord
   has_many :tags, through: :taggings
 
   # タグ付けの新規投稿用メソッド
-  def save_tags(sent_tags)
+  def save_tags(tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
-    old_tags = current_tags - sent_tags
+    old_tags = current_tags - tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
-    new_tags = sent_tags - current_tags
+    new_tags = tags - current_tags
 
     # 古いタグを消す
     old_tags.each do |old|
@@ -45,8 +45,8 @@ class Review < ApplicationRecord
 
     # 新しいタグを保存
     new_tags.each do |new|
-      new_review_tag = Tag.find_or_create_by(name: new)
-      self.tags << new_review_tag
+      tags = Tag.find_or_create_by(name: new)
+      self.tags << tags
     end
   end
 
