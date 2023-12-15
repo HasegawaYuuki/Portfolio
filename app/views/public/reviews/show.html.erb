@@ -3,7 +3,7 @@
     <div class="col">
       <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
 
-      <section>
+      <section class="review-show-top">
         <div class="flex-row">
           <% @tags.each do |tag| %>
             <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
@@ -25,9 +25,12 @@
             公演日：<%= @review.date.strftime('%Y/%m/%d') %>
             <br />
             開演時間：<%= @review.time.strftime('%H:%M') %>
+            <%#= image_tag @review.get_review_image(100,100) %>
           </div>
         </div>
+      </section>
 
+      <section class="review-show-bottom">
         <div class="flex-row">
           <div class="btn-group-vertical review-show-left">
             <%= @customer.name %>
