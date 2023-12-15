@@ -1,49 +1,58 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h3>投稿詳細</h3>
+      <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
 
-        <div>
-        <%= image_tag @customer.get_image(100,100) %>
-        <br />
-        <%= @customer.name %>
-        <br />
-        <% if @customer === current_customer %>
-          <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
-          <br />
-          <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger" %>
-        <% end %>
-        </div>
-        タイトル：<%= @review.title %>
-        <%= @review.sub_title %>
-        会場名：<%= @review.venue_name %>
-        公演日：<%= @review.date.strftime('%Y/%m/%d') %>
-        開演時間：<%= @review.time.strftime('%H:%M') %>
-        <br />
-        <%= @review.status_i18n %>
-        <br />
-        <% if @review.review_image.attached? %>
-          <% @review.review_image.each do |review_image| %>
-            <%= image_tag @review.review_image.first.variant(resize: '200x150') %>
+      <section>
+        <div class="flex-row">
+          <% @tags.each do |tag| %>
+            <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
           <% end %>
-        <% end %>
-        <br />
-
-
-        <%= @review.body.truncate(20) %>
-        <br />
-
-        <% @tags.each do |tag| %>
-          <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
-        <% end %>
-        <br />
-        <div id="favorite_btn_<%= @review.id %>">
-          <%= render "public/favorites/btn", review: @review %>
+          <div id="favorite_btn_<%= @review.id %>">
+            <%= render "public/favorites/btn", review: @review %>
+          </div>
         </div>
+
+        <div class="flex-row">
+          <div class="review-show-left">
+            <%= image_tag @customer.get_image(100,100) %>
+          </div>
+          <div class="review-show-right">
+            タイトル：<%= @review.title %><%= @review.sub_title %>
+            <br />
+            会場名：<%= @review.venue_name %>
+            <br />
+            公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+            <br />
+            開演時間：<%= @review.time.strftime('%H:%M') %>
+          </div>
+        </div>
+
+        <div class="flex-row">
+          <div class="btn-group-vertical review-show-left">
+            <%= @customer.name %>
+            <% if @customer === current_customer %>
+              <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
+              <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger mt-2" %>
+            <% end %>
+          </div>
+          <div class="review-show-right">
+            <%= @review.body %>
+          </div>
+        </div>
+
+        <div class="flex-row">
+        </div>
+        <div class="flex-row">
+        </div>
+        <div class="flex-row">
+        </div>
+      </section>
 
       <div id="review_comment">
         <%= render "public/review_comments/comment", review: @review %>
       </div>
+
       <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
 
     </div>
