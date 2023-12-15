@@ -36,6 +36,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :name
       ## 自己紹介を保存するカラム
       t.text :introduction
+      ## 会員ステータスを保存するカラム
+      t.boolean :is_active, null: false, default: true
 
 
       t.timestamps null: false

@@ -29,13 +29,14 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  #ブックマーク一覧
+  # ブックマーク一覧
   def favorite_index
     @customer = Customer.find(params[:id])
     favorites = Favorite.where(customer_id: @customer.id).pluck(:review_id)
     @favorite_reviews = Review.find(favorites)
   end
 
+  # 退会機能
   def withdraw
     current_customer.update(is_active: false)
     reset_session
@@ -54,5 +55,7 @@ class Public::CustomersController < ApplicationController
       redirect_to customer_path(current_customer.id)
     end
   end
+  
+  
 
 end

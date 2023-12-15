@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2023_12_06_065506) do
     t.datetime "remember_created_at"
     t.string "name"
     t.text "introduction"
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -97,6 +98,9 @@ ActiveRecord::Schema.define(version: 2023_12_06_065506) do
     t.text "body", null: false
     t.string "venue_name", null: false
     t.integer "status", default: 0, null: false
+    t.date "date"
+    t.time "time"
+    t.integer "report_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
