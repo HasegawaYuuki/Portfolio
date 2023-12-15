@@ -3,11 +3,23 @@
   <tbody>
     <% customers.each do |customer| %>
       <tr>
-        <td><%= image_tag customer.get_image(80,80) %></td>
-        <td><%= customer.name %></td>
-        <td>フォロー<%= customer.followings.count %>人</td>
-        <td>フォロワー<%= customer.followers.count %>人</td>
-        <td><%= link_to "詳細ページ", admin_customer_path(customer.id), class:"btn btn-outline-success" %></td>
+        <td>
+          <%= image_tag customer.get_image(80,80) %>
+        </td>
+        <td>
+          <%= link_to admin_customer_path(customer.id) do %>
+          <%= customer.name %>
+          <% end %>
+        </td>
+        <td>
+          フォロー<%= customer.followings.count %>人
+        </td>
+        <td>
+          フォロワー<%= customer.followers.count %>人
+        </td>
+        <td class="<%= customer.is_active ? 'text-success' : 'text-muted' %>">
+          <%= customer.is_active ? '有効' : '退会' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

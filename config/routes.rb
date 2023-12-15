@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     resources :taggings
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
+    # 退会確認画面
+    get  '/customers/check' => 'customers#check'
+    # 論理削除用のルーティング
+    patch  '/customers/withdraw' => 'customers#withdraw'
   end
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
