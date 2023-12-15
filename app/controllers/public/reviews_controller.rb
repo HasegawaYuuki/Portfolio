@@ -9,11 +9,6 @@ class Public::ReviewsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.save
-      @old_relations=Tagging.where(review_id: @review.id)
-      #それらを取り出し、消す。消し終わる
-      @old_relations.each do |relation|
-      relation.delete
-      end
        @review.save_tags(tag_list)
       redirect_to review_path(@review.id), notice:'投稿が公開されました'
     elsif @review.draft?
@@ -25,9 +20,10 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @tag_list = Tag.all
     @spoiler_review = Review.where(status: :spoiler)
     @not_spoiler_review = Review.where(status: :not_spoiler)
+    @tag_list = Tag.all
+    @customer = current_customer
   end
 
   def show
@@ -53,12 +49,7 @@ class Public::ReviewsController < ApplicationController
     #受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.update(review_params)
-      @old_relations=Tagging.where(review_id: @review.id)
-      #それらを取り出し、消す。消し終わる
-      @old_relations.each do |relation|
-      relation.delete
-      end
-       @review.save_tags(tag_list)
+      @review.save_tags(tag_list)
       redirect_to review_path(@review.id), notice:'編集が完了しました'
     elsif @review.draft?
       redirect_to customer_path(current_customer.id), notice:'下書きが保存されました'
@@ -74,10 +65,20 @@ class Public::ReviewsController < ApplicationController
     redirect_to customer_path(current_customer.id)
   end
 
+  def search_tag
+    #検索結果画面でもタグ一覧表示
+    @tag_list = Tag.all
+    #検索されたタグを受け取る
+    @tag = Tag.find(params[:tag_id])
+    #検索されたタグに紐づく投稿を表示
+    @not_spoiler_review = @tag.reviews.where(status: :not_spoiler)
+    @spoiler_review = @tag.reviews.where(status: :spoiler)
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :status)
+    params.require(:review).permit(:title, :sub_title, :body, :venue_name, :tag, :status, review_image: [])
   end
 
 end

@@ -1,4 +1,6 @@
 ja:
+  activerecord:
+
   enums:
     review:
       status:
@@ -12,6 +14,22 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      review: レビュー
+      tag: タグ
+      customer: 会員情報
+    attributes:
+      review:
+        title: タイトル
+        sub_title: サブタイトル
+        body: 感想
+        venue_name: 会場名
+      tag:
+        name: タグ
+      customer:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
   date:
     abbr_day_names:
     - 日

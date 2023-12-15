@@ -2,6 +2,16 @@
   <div class="row mt-5">
     <div class="col">
       <h3>新規投稿</h3>
+      <% if @review.errors.any? %>
+        <div class="alert alert-danger">
+          <%= @review.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @review.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= render 'public/reviews/form', review: @review, tag_list: @tag_list %>
     </div>
   </div>

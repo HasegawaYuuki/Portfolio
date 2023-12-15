@@ -3,21 +3,25 @@
 <div class="row row-cols-4">
   <% draft_review.each do |draft_review| %>
     <div class="col mb-4">
-      <div class="card", style="width: 18rem;">
-        <div class="card-body">
-          <%= link_to customer_path(draft_review.customer.id) do %>
-            <%= image_tag draft_review.customer.get_image(80,80) %>
-            <%= draft_review.customer.name %>
-          <% end %>
-          <%= link_to review_path(draft_review.id) do %>
-            <div class="card-title">
-              <%= draft_review.title %><%= draft_review.sub_title %><%= render "public/favorites/view", review: draft_review %>
-            </div>
-            <%= draft_review.body %>
-            <%= draft_review.venue_name %>
-          <% end %>
-          <i class="fa-solid fa-tag"></i>
-          <%= draft_review.tags.map(&:name).join(', ') %>
+      <div class="card-deck">
+        <div class="card", style="width: 18rem;">
+          <div class="card-body">
+            <%= link_to customer_path(draft_review.customer.id) do %>
+              <%= image_tag draft_review.customer.get_image(80,80) %><br>
+              <%= draft_review.customer.name %>
+            <% end %>
+              <div class="card-title">
+                <%= link_to review_path(draft_review.id) do %>
+                  <%= draft_review.title %><%= draft_review.sub_title %>
+                <% end %>
+                <%= render "public/favorites/view", review: draft_review %>
+              </div>
+              <%= draft_review.body.truncate(35) %>
+              <br />
+              <%= draft_review.venue_name %>
+            <i class="fa-solid fa-tag"></i>
+            <%= draft_review.tags.map(&:name).join(', ') %>
+          </div>
         </div>
       </div>
     </div>

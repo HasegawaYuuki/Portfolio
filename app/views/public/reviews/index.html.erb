@@ -1,10 +1,12 @@
 <div class="container-fluid">
-  <h3 class="mt-5">投稿一覧</h3>
-  <div class="row">
-    <div class="col">
-
+  <div class="row mt-5">
+    <div class="col-3">
+      <%= render 'public/customers/side_bar', customer: @customer %>
+    </div>
+    <div class="col-9">
+      <h3>投稿一覧</h3>
+      <%= render 'public/reviews/tag_list', tag_list: @tag_list %>
       <%= render 'public/customers/tab', not_spoiler_review: @not_spoiler_review,spoiler_review: @spoiler_review %>
-
     </div>
   </div>
 </div>

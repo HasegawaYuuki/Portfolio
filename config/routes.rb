@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+  get "search" => "searches#search"
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

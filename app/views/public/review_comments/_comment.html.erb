@@ -1,23 +1,25 @@
-<p>コメント一覧  <%= review.review_comments.count %>件</p>
-<table class="table">
-  <tbody>
-    <% review.review_comments.each do |review_comment| %>
-    <tr>
-      <td>
-      <%= image_tag review_comment.customer.get_image(50,50) %><br />
-      <%= review_comment.customer.name %>
-      </td>
-      <td>
-      <%= review_comment.comment %>
-      </td>
-      <td>
-        <div id="review_comment">
-          <% if review_comment.customer == current_customer %>
-            <%= link_to "削除", review_review_comment_path(review, review_comment), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger", remote:true, data: {"turbolinks" => false}  %>
-          <% end %>
-        </div>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="card">
+  <p>コメント一覧  <%= review.review_comments.count %>件</p>
+  <table class="table">
+    <tbody>
+      <% review.review_comments.each do |review_comment| %>
+      <tr>
+        <td>
+        <%= image_tag review_comment.customer.get_image(50,50) %><br />
+        <%= review_comment.customer.name %>
+        </td>
+        <td>
+        <%= review_comment.comment %>
+        </td>
+        <td>
+          <div id="review_comment">
+            <% if review_comment.customer == current_customer %>
+              <%= link_to "削除", review_review_comment_path(review, review_comment), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger", remote:true, data: {"turbolinks" => false}  %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

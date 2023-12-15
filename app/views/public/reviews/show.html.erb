@@ -3,30 +3,41 @@
     <div class="col">
       <h3>投稿詳細</h3>
 
-      <div class="card">
-        <div class="card-body">
-          <%= image_tag @customer.get_image(80,80) %>
-          <%= @customer.name %>
-          <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
-          <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger" %>
-          <div class="card-title">
-            <%= @review.status_i18n %>
-          </div>
-          <div class="card-subtitle">
-            <%= @review.title %>
-            <%= @review.sub_title %>
-          </div>
-          <%= @review.body %>
-          <%= @review.venue_name %>
-
-          <% @tags.each do |tag| %>
-            <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
-          <% end %>
-          <div id="favorite_btn_<%= @review.id %>">
-            <%= render "public/favorites/btn", review: @review %>
-          </div>
+        <div>
+        <%= image_tag @customer.get_image(100,100) %>
+        <br />
+        <%= @customer.name %>
+        <br />
+        <% if @customer === current_customer %>
+          <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
+          <br />
+          <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger" %>
+        <% end %>
         </div>
-      </div>
+        <%= @review.title %>
+        <%= @review.sub_title %>
+        <%= @review.venue_name %>
+        <br />
+        <%= @review.status_i18n %>
+        <br />
+        <% if @review.review_image.attached? %>
+          <% @review.review_image.each do |review_image| %>
+            <%= image_tag @review.review_image.first.variant(resize: '200x150') %>
+          <% end %>
+        <% end %>
+        <br />
+
+
+        <%= @review.body.truncate(20) %>
+        <br />
+
+        <% @tags.each do |tag| %>
+          <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
+        <% end %>
+        <br />
+        <div id="favorite_btn_<%= @review.id %>">
+          <%= render "public/favorites/btn", review: @review %>
+        </div>
 
       <div id="review_comment">
         <%= render "public/review_comments/comment", review: @review %>
