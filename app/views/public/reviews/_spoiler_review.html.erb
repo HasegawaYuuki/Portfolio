@@ -20,7 +20,8 @@
             
             <%= spoiler_review.body.truncate(35) %>
             <br />
-            <%= spoiler_review.venue_name %>
+            会場名：<%= spoiler_review.venue_name %>
+            公演日時：<%= not_spoiler_review.date %><%= not_spoiler_review.time %>
             <i class="fa-solid fa-tag"></i>
             <%= spoiler_review.tags.map(&:name).join(', ') %>
           </div>

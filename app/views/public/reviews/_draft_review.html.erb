@@ -18,7 +18,8 @@
               </div>
               <%= draft_review.body.truncate(35) %>
               <br />
-              <%= draft_review.venue_name %>
+              会場名：<%= draft_review.venue_name %>
+              公演日時：<%= not_spoiler_review.date %><%= not_spoiler_review.time %>
             <i class="fa-solid fa-tag"></i>
             <%= draft_review.tags.map(&:name).join(', ') %>
           </div>
