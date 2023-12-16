@@ -30,6 +30,7 @@ $dark: #a8a8ff;
   margin-top: 4px;
 }
 
+// index(customer)
 .flex-item {
   top: 0;
   bottom: 0;
@@ -61,6 +62,7 @@ $dark: #a8a8ff;
   width: 130px;
 }
 
+// side_bar(customer・admin)
 .flex-side_bar {
   top: 0;
   bottom: 0;
@@ -73,31 +75,33 @@ $dark: #a8a8ff;
   width: 170px;
 }
 
+
+// comment(admin)
 .flex-comment {
   height: 80px;
+  width: 170px;
 }
 
-.flex-comment:nth-child(1) {
+.favolit-btn {
+  font-size: 20px
+}
 
-  width: 170px;
+// review/show(customer)
+.review-show-left {
+  width: 120px;
+}
+
+.review-show-right {
+  width: 1000px;
+  margin-left: 10px;
+}
+
+// comment(customer)
+
+.flex-comment:nth-child(1) {
+  width: 100px;
 }
 
 .flex-comment:nth-child(2) {
-
-  width: 170px;
-}
-
-.flex-comment:nth-child(3) {
-
-  width: 170px;
-}
-
-.flex-comment:nth-child(4) {
-
-  width: 170px;
-}
-
-.flex-comment:nth-child(5) {
-
-  width: 170px;
+  width: 400px;
 }

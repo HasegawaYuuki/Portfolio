@@ -8,7 +8,6 @@
           <div class="card-body">
             <%= link_to customer_path(not_spoiler_review.customer.id) do %>
               <%= image_tag not_spoiler_review.customer.get_image(80,80) %>
-              <br />
               <%= not_spoiler_review.customer.name %>
             <% end %>
             <%# if not_spoiler_review.review_image.attached? %>
@@ -22,8 +21,9 @@
             </div>
             <%= not_spoiler_review.body.truncate(35) %>
             <br />
-            会場名：<%= not_spoiler_review.venue_name %>
-
+            会場名：<%= not_spoiler_review.venue_name %><br />
+            公演日：<%= not_spoiler_review.date.strftime('%Y/%m/%d') %><br />
+            開演時間：<%= not_spoiler_review.time.strftime('%H:%M') %>
             <br />
             <i class="fa-solid fa-tag"></i>
             <%= not_spoiler_review.tags.map(&:name).join(', ') %>

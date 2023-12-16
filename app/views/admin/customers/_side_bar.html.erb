@@ -1,0 +1,27 @@
+<div class="card px-5">
+  <section>
+    <div class="flex-row">
+      <div class="flex-side_bar">
+        <%= image_tag customer.get_image(150,10500) %>
+      </div>
+      <div class="flex-side_bar">
+        <% if customer === current_customer %>
+          <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-warning mt-2" %>
+          <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-outline-success mt-2" %>
+          <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-outline-success mt-2" %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <div>
+    <p class="mt-2">ユーザー名：<%= customer.name %></p>
+  </div>
+  <div class="mt-2">
+    フォロー:<%= customer.followings.count %>人
+    フォロワー:<%= customer.followers.count %>人
+  </div>
+  <div>
+    <p class="mt-2">自己紹介</p>
+    <%= customer.introduction %>
+  </div>
+</div>

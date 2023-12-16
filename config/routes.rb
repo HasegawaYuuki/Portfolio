@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     resources :tags
     resources :taggings
     root to: 'homes#top'
+    get "search_tag" => "reviews#search_tag"
     get 'about' => 'homes#about', as: 'about'
     # 退会確認画面
     get  '/customers/check' => 'customers#check'
