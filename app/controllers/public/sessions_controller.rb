@@ -23,7 +23,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to customer_path(current_customer.id), notice: 'ゲストユーザーとしてログインしました。'
   end
 
   # protected
@@ -34,7 +34,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    about_path
+    customer_path(current_customer.id)
   end
 
   private
@@ -42,7 +42,7 @@ class Public::SessionsController < Devise::SessionsController
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
         redirect_to new_customer_registration_path
       else

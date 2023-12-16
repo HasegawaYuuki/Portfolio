@@ -14,18 +14,23 @@
         </div>
 
         <div class="flex-row">
-          <div class="review-show-left">
+          <div class="col review-show-left">
             <%= image_tag @customer.get_image(100,100) %>
           </div>
-          <div class="review-show-right">
+          <div class="col review-show-right">
             タイトル：<%= @review.title %><%= @review.sub_title %>
             <br />
             会場名：<%= @review.venue_name %>
-            <br />
+          </div>
+          <div class="col review-show-rights">
             公演日：<%= @review.date.strftime('%Y/%m/%d') %>
             <br />
             開演時間：<%= @review.time.strftime('%H:%M') %>
-            <%#= image_tag @review.get_review_image(100,100) %>
+          </div>
+          <div class="col review-show-rights">
+            <% @review.review_images.each do |image| %>
+              <%= image_tag image.variant(resize_to_limit: [100, 100]).processed %>
+            <% end %>
           </div>
         </div>
       </section>
@@ -42,13 +47,6 @@
           <div class="review-show-right">
             <%= @review.body %>
           </div>
-        </div>
-
-        <div class="flex-row">
-        </div>
-        <div class="flex-row">
-        </div>
-        <div class="flex-row">
         </div>
       </section>
 

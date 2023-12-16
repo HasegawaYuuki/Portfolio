@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     if resource == :admin
       root_path
     elsif resource == :customer
-      root_path
+      customer_path(current_customer.id)
     end
   end
 
