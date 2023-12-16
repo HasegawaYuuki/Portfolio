@@ -4,25 +4,35 @@
   <% draft_review.each do |draft_review| %>
     <div class="col mb-4">
       <div class="card-deck">
-        <div class="card", style="width: 18rem;">
-          <div class="card-body">
+        <div class="card">
+          <div class="card-header">
             <%= link_to customer_path(draft_review.customer.id) do %>
               <%= image_tag draft_review.customer.get_image(80,80) %><br>
               <%= draft_review.customer.name %>
             <% end %>
-              <div class="card-title">
-                <%= link_to review_path(draft_review.id) do %>
-                  <%= draft_review.title %><%= draft_review.sub_title %>
-                <% end %>
-                <%= render "public/favorites/view", review: draft_review %>
-              </div>
-              <%= draft_review.body.truncate(35) %>
-              <br />
-              会場名：<%= draft_review.venue_name %>
-              公演日時：<%= not_spoiler_review.date.strftime('%Y/%m/%d') %>  <%= not_spoiler_review.time.strftime('%H:%M') %>
+          </div>
+
+          <div class="card-title text-center">
+            <%= link_to review_path(draft_review.id) do %>
+              <%= draft_review.title %><%= draft_review.sub_title %>
+            <% end %>
+          </div>
+
+          <div class="card-body">
+            <%= draft_review.body.truncate(35) %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">会場名：<%= draft_review.venue_name %></li>
+            <li class="list-group-item">公演日：<%= draft_review.date.strftime('%Y/%m/%d') %></li>
+            <li class="list-group-item">開演時間：<%= draft_review.time.strftime('%H:%M') %></li>
+          </ul>
+
+          <div class="card-body">
+            <%= render "public/favorites/view", review: draft_review %>
             <i class="fa-solid fa-tag"></i>
             <%= draft_review.tags.map(&:name).join(', ') %>
           </div>
+
         </div>
       </div>
     </div>
