@@ -2,7 +2,7 @@
   <section>
     <div class="flex-row">
       <div class="flex-side_bar">
-        <%= image_tag customer.get_image(150,150), class:"rounded-circle" %>
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
       </div>
       <div class="flex-side_bar">
         <% if customer === current_customer %>
@@ -28,7 +28,13 @@
     <% end %>
   </div>
   <div>
-    <p class="mt-2">自己紹介</p>
-    <%= customer.introduction %>
+    <p class="mt-2">自己紹介：</p>
+    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+    <%if customer.introduction.nil? %>
+      <%= customer.introduction %>
+    <% else %>
+      <!--紹介文が「空」じゃない時は正常に反映する-->
+      <%= safe_join(customer.introduction.split("\n"),tag(:br)) %>
+    <%end %>
   </div>
 </div>
