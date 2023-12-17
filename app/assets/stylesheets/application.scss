@@ -22,9 +22,44 @@ $info: #fde8d0;
 $light: #ffffe0; //lightyellow
 $dark: #a8a8ff;
 
+.btn-outline-primary {
+  color: $primary;
+  border-color: $primary;
+}
+
+.btn-outline-secondary {
+  color: $secondary;
+  border-color: $secondary;
+}
+
+.btn-outline-success {
+  color: $success;
+  border-color: $success;
+}
+
+.btn-outline-danger {
+  color: $danger;
+  border-color: $danger;
+}
+
 .btn-outline-warning {
   color: $warning;
   border-color: $warning;
+}
+
+.btn-outline-info {
+  color: $info;
+  border-color: $info;
+}
+
+.btn-outline-light {
+  color: $light;
+  border-color: $light;
+}
+
+.btn-outline-dark {
+  color: $dark;
+  border-color: $dark;
 }
 
 body {
@@ -37,7 +72,7 @@ body {
 }
 
 .header {
-  background-color: #d7003a;
+  background-color: #e60033;
 }
 
 .header-search {
