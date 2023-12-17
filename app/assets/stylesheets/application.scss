@@ -17,10 +17,15 @@ $primary: #0073a8;
 $secondary: #d4d9df;
 $success: #2cb4ad; //ナイルブルー
 $danger: #b33e5c; //ワインレッド
-$warning: #ffffb7;
-$info: #c1c1ff;
+$warning: #a8bf93;
+$info: #fde8d0;
 $light: #ffffe0; //lightyellow
 $dark: #a8a8ff;
+
+.btn-outline-warning {
+  color: $warning;
+  border-color: $warning;
+}
 
 body {
   background-color: #fde8d0;
