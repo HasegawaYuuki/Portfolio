@@ -4,7 +4,7 @@
     <% @customers.each do |customer| %>
     <div class="flex-row">
       <div class="flex-item">
-        <%= image_tag customer.get_image(80,80) %>
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
       </div>
       <div class="flex-item">
         <%= link_to admin_customer_path(customer.id) do %>

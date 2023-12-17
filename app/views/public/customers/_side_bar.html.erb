@@ -6,7 +6,7 @@
       </div>
       <div class="flex-side_bar">
         <% if customer === current_customer %>
-          <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-warning mt-2" %>
+          <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-success mt-2" %>
           <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-outline-success mt-2" %>
           <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-outline-success mt-2" %>
         <% end %>
