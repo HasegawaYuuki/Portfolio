@@ -19,7 +19,11 @@
     <div class="header">
       <%= render 'layouts/header' %>
     </div>
+
     <p class="notice alert-danger"><%= notice %></p>
-    <%= yield %>
+
+    <div class="main">
+      <%= yield %>
+    </div>
   </body>
 </html>
