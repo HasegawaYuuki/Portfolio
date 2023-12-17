@@ -15,7 +15,7 @@ class Review < ApplicationRecord
      file_path = Rails.root.join('app/assets/images/no_image.jpg')
      review_images.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
-   review_images.(resize_to_limit: [width, height]).processed
+   review_images.(resize: [width, height]).processed
   end
 
   # いいね機能

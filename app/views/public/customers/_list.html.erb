@@ -4,10 +4,14 @@
   <% customers.each do |customer| %>
   <div class="flex-row">
     <div class="flex-item">
-      <%= image_tag customer.get_image(80,80) %>
+      <%= link_to customer_path(customer.id) do %>
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+      <% end %>
     </div>
     <div class="flex-item">
-      <%= customer.name %>
+      <%= link_to customer_path(customer.id) do %>
+        <%= customer.name %>
+      <% end %>
     </div>
     <div class="flex-item">
       フォロー<%= customer.followings.count %>人
@@ -17,9 +21,6 @@
     </div>
     <div class="flex-item">
       <%= render "public/relationships/btn", customer: customer %>
-    </div>
-    <div class="flex-item">
-      <%= link_to "詳細ページ", customer_path(customer.id), class:"btn btn-outline-success" %>
     </div>
   </div>
   <% end %>

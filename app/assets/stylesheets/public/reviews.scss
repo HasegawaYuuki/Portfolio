@@ -3,12 +3,41 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // review/show(customer)
+
+.review-show-top {
+  margin-top: 10px;
+}
+
 .review-show-left {
   width: 120px;
+  margin-top: 10px;
 }
 
 .review-show-right {
-  width: 1000px;
-  margin-left: 10px;
+
+  margin-top: 10px;
+  margin-left: 0%;
 }
+
+.review-show-rights {
+  margin-top: 10px;
+}
+
+.review-show-body-right {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.review-show-bottom {
+  margin-top: 10px;
+}
+
+.review-comment {
+  margin-top: 10px;
+}
+
+review-card {
+  width: 300px;
+}
+
 

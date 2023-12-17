@@ -27,6 +27,10 @@ $dark: #a8a8ff;
   margin: 0 30px
 }
 
+.header {
+  background-color: #d7003a;
+}
+
 .header-search {
   display: flex;
   justify-content: flex-end;
@@ -43,37 +47,6 @@ $dark: #a8a8ff;
   margin-top: 4px;
 }
 
-// index(customer)
-.flex-item {
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  padding: 4px;
-}
-
-.flex-item:nth-child(1) {
-  width: 80px;
-}
-
-.flex-item:nth-child(2) {
-  width: 160px;
-}
-
-.flex-item:nth-child(3) {
-  width: 200px;
-}
-
-.flex-item:nth-child(4) {
-  width: 130px;
-}
-
-.flex-item:nth-child(5) {
-  width: 140px;
-}
-
-.flex-item:nth-child(6) {
-  width: 130px;
-}
 
 // side_bar(customer・admin)
 .flex-side_bar {
