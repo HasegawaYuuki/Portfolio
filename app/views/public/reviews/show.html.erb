@@ -14,22 +14,26 @@
         </div>
 
         <div class="flex-row">
-          <div class="col review-show-left">
+          <div class="review-show-left">
             <%= image_tag @customer.get_image(100,100) %>
+            <br />
+            <%= @customer.name %>
           </div>
-          <div class="col review-show-right">
+
+          <div class="review-show-right">
             タイトル：<%= @review.title %><%= @review.sub_title %>
             <br />
             会場名：<%= @review.venue_name %>
-          </div>
-          <div class="col review-show-rights">
+            <br />
             公演日：<%= @review.date.strftime('%Y/%m/%d') %>
             <br />
             開演時間：<%= @review.time.strftime('%H:%M') %>
           </div>
-          <div class="col review-show-rights">
-            <% @review.review_images.each do |image| %>
-              <%= image_tag image.variant(resize_to_limit: [100, 100]).processed %>
+          <div class="review-show-right">
+            <% if @customer === current_customer %>
+              <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
+              <br />
+              <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger mt-2" %>
             <% end %>
           </div>
         </div>
@@ -37,20 +41,21 @@
 
       <section class="review-show-bottom">
         <div class="flex-row">
-          <div class="btn-group-vertical review-show-left">
-            <%= @customer.name %>
-            <% if @customer === current_customer %>
-              <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
-              <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger mt-2" %>
-            <% end %>
-          </div>
-          <div class="review-show-right">
+          <% @review.review_images.each do |review_images| %>
+            <%= image_tag review_images.variant(resize: '300x500').processed %>
+          <% end %>
+        </div>
+      </section>
+
+      <section class="review-show-bottom">
+        <div class="flex-row">
+          <div class="btn-group-vertical">
             <%= @review.body %>
           </div>
         </div>
       </section>
 
-      <div id="review_comment">
+      <div class="review-comment" id="review_comment">
         <%= render "public/review_comments/comment", review: @review %>
       </div>
 

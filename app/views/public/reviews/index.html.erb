@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h3>投稿一覧  <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-warning mt-2" %></h3>
+      <h3>投稿一覧</h3>
       <%= render 'public/reviews/tag_list', tag_list: @tag_list %>
-      <%= render 'public/customers/tab', not_spoiler_review: @not_spoiler_review,spoiler_review: @spoiler_review %>
+      <div class="tab border border-dark">
+        <%= render 'public/customers/tab', not_spoiler_review: @not_spoiler_review,spoiler_review: @spoiler_review %>
+      </div>
     </div>
   </div>
 </div>
+

@@ -22,10 +22,11 @@
     <%= f.text_field :tag_id,value: tag_list, class: 'form-control review_tag' %>
 
     <label>画像</label>
-    <%= f.file_field :review_image, accept: "image/*", multiple: true %>
+    <br />
+    <%= f.file_field :review_images, accept: "image/*", multiple: true %>
     <br />
 
-    <label>ネタバレ有無・非公開</label>
+    <label>ネタバレ有無・下書き</label>
     <br />
     <%= f.radio_button :status, Review.statuses.key(0) %>
     <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
