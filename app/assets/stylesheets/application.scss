@@ -37,6 +37,20 @@ $dark: #a8a8ff;
   border-color: $success;
 }
 
+.btn-outline-success:hover, .btn-outline-success:focus,
+.btn-outline-success:active, .btn-outline-success:active:focus, .btn-outline-success:active:hover, .btn-outline-success:active.focus,
+.btn-outline-success.active, .btn-outline-success.active:focus, .btn-outline-success.active:hover, .btn-outline-success.active.focus,
+.open > .dropdown-toggle.btn-outline-success,
+.open > .dropdown-toggle.btn-outline-success:hover,
+.open > .dropdown-toggle.btn-outline-success:focus,
+.open > .dropdown-toggle.btn-outline-success.focus,
+.btn-outline-success.disabled:hover, .btn-outline-success[disabled]:hover, fieldset[disabled] .btn-outline-success:hover,
+.btn-outline-success.disabled:focus, .btn-outline-success[disabled]:focus, fieldset[disabled] .btn-outline-success:focus,
+.btn-outline-success.disabled.focus, .btn-outline-success[disabled].focus, fieldset[disabled] .btn-outline-success.focus {
+    background: $success; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
 .btn-outline-danger {
   color: $danger;
   border-color: $danger;
@@ -52,6 +66,24 @@ $dark: #a8a8ff;
   border-color: $info;
 }
 
+.btn-outline-info:hover, .btn-outline-info:focus,
+.btn-outline-info:active, .btn-outline-info:active:focus, .btn-outline-info:active:hover, .btn-outline-info:active.focus,
+.btn-outline-info.active, .btn-outline-info.active:focus, .btn-outline-info.active:hover, .btn-outline-info.active.focus,
+.open > .dropdown-toggle.btn-outline-info,
+.open > .dropdown-toggle.btn-outline-info:hover,
+.open > .dropdown-toggle.btn-outline-info:focus,
+.open > .dropdown-toggle.btn-outline-info.focus,
+.btn-outline-info.disabled:hover, .btn-outline-info[disabled]:hover, fieldset[disabled] .btn-outline-info:hover,
+.btn-outline-info.disabled:focus, .btn-outline-info[disabled]:focus, fieldset[disabled] .btn-outline-info:focus,
+.btn-outline-info.disabled.focus, .btn-outline-info[disabled].focus, fieldset[disabled] .btn-outline-info.focus,
+.btn-outline-info:not(:disabled):not(.disabled):active{
+    background: $info; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+}
+
+.btn-outline-info:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem #ffcb07;
+}
 .btn-outline-light {
   color: $light;
   border-color: $light;
@@ -101,7 +133,6 @@ body {
 }
 
 .flex-side_bar:nth-child(2) {
-
   width: 170px;
 }
 
@@ -125,4 +156,8 @@ body {
 
 .flex-comment:nth-child(2) {
   width: 400px;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom: solid 1px black;
 }

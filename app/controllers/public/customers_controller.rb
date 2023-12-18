@@ -36,6 +36,10 @@ class Public::CustomersController < ApplicationController
     @favorite_reviews = Review.find(favorites)
   end
 
+  def check
+    @customer = current_customer
+  end
+
   # 退会機能
   def withdraw
     current_customer.update(is_active: false)

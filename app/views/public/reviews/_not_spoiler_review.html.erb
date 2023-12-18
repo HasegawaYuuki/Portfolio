@@ -1,8 +1,8 @@
 <!--ネタバレなし @not_spoiler_review = @customer.reviews.where(status: :not_spoiler)-->
 
-<div class="row row-cols-3">
+<div class="row">
   <% not_spoiler_review.each do |not_spoiler_review| %>
-    <div class="col mb-4">
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card mx-auto mt-4 shadow-lg">
 
         <div class="card-header">
@@ -12,9 +12,9 @@
           <% end %>
         </div>
 
-        <div class="card-title text-center">
+        <div>
           <%= link_to review_path(not_spoiler_review.id) do %>
-            <h5><%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %></h5>
+            <h5 class="card-title text-center mt-2"><%= not_spoiler_review.title %><%= not_spoiler_review.sub_title %></h5>
           <% end %>
         </div>
 

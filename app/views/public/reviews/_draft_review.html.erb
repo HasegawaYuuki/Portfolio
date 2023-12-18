@@ -1,9 +1,9 @@
 <!--下書き @draft_review = @customer.reviews.where(status: :draft)-->
 
-<div class="row row-cols-3">
+<div class="row">
   <% draft_review.each do |draft_review| %>
-    <div class="col mb-4">
-      <div class="card review-card w-300 mx-auto mt-4 shadow-lg">
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <div class="card mx-auto mt-4 shadow-lg">
 
         <div class="card-header">
           <%= link_to customer_path(draft_review.customer.id) do %>
@@ -12,9 +12,9 @@
           <% end %>
         </div>
 
-        <div class="card-title text-center">
+        <div>
           <%= link_to review_path(draft_review.id) do %>
-            <h5><%= draft_review.title %><%= draft_review.sub_title %></h5>
+            <h5 class="card-title text-center mt-2"><%= draft_review.title %><%= draft_review.sub_title %></h5>
           <% end %>
         </div>
 
@@ -27,7 +27,7 @@
           </ul>
         </div>
 
-        <div class="card-body">
+        <div class="card-body text-center">
           <%= render "public/favorites/view", review: draft_review %>
           |
           <i class="fa-solid fa-tag"></i>
