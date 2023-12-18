@@ -1,9 +1,23 @@
-<h3>本当に退会しますか？</h3>
-  <p>
-    退会すると、会員登録情報が閲覧できなくなります。<br />
-    投稿内容は残りますので、消したい場合は削除してから退会をお願いします。<br />
-    退会する場合は、「退会する」をクリックしてください。
-  </p>
-
-  <%= link_to "退会しない", customer_path(@customer.id), :class => "btn btn-outline-primary ms-3" %>
-  <%= link_to "退会する", customers_withdraw_path, method: :patch, :class => "btn btn-outline-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+<!--顧客側／会員の退会確認画面-->
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md text-center p-2">
+      <h3>本当に退会しますか？</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md text-center p-2">
+      <p>
+        退会すると、会員登録情報が閲覧できなくなります。<br />
+        投稿内容は残りますので、消したい場合は削除してから退会をお願いします。<br />
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md text-center p-2">
+      <%= link_to "退会しない", customer_path(@customer.id), :class => "btn btn-outline-primary ms-3" %>
+      <%= link_to "退会する", customers_withdraw_path, method: :patch, :class => "btn btn-outline-danger ms-3", data: { confirm: "本当に退会しますか？" }  %>
+    </div>
+  </div>
+</div>
