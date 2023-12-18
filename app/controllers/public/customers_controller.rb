@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def index
     @customer = current_customer
-    @customers = Customer.all
+    @customers = Customer.where(is_active: true)
   end
 
   def show
