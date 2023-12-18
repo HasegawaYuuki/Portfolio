@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         get :followers
       end
     end
-    resources :reviews, only: [:index, :show]
+    resources :reviews, only: [:index, :show, :edit, :update]
     resources :review_comments
     root to: 'homes#top'
   end

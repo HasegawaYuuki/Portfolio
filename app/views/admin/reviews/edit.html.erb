@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card p-5">
+        <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
+
+        <section class="review-show-top">
+          <div class="flex-row">
+            <div class="review-show-left">
+              <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
+              <br />
+              <%= @customer.name %>
+            </div>
+
+            <div class="review-show-right">
+              タイトル：<%= @review.title %><%= @review.sub_title %>
+              <br />
+              会場名：<%= @review.venue_name %>
+              <br />
+              公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+              <br />
+              開演時間：<%= @review.time.strftime('%H:%M') %>
+            </div>
+
+
+          </div>
+        </section>
+
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <% @review.review_images.each do |review_images| %>
+              <%= image_tag review_images.variant(resize: '250x500').processed %>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <div class="btn-group-vertical">
+              <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+              <%if @review.body.nil? %>
+                <%= @review.body %>
+              <% else %>
+                <!--感想考察が「空」じゃない時は正常に反映する-->
+                <%= safe_join(@review.body.split("\n"),tag(:br)) %>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-3">
+          <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
+
+            <label>ネタバレ有無・下書き</label>
+            <br />
+            <%= f.radio_button :status, Review.statuses.key(0) %>
+            <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
+            <%= f.radio_button :status, Review.statuses.key(1) %>
+            <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
+            <%= f.radio_button :status, Review.statuses.key(2) %>
+            <%= f.label :status, Review.statuses_i18n[:draft], value: Review.statuses.key(2) %>
+            <br />
+            <div>
+              <%= f.submit '更新する', class: "btn btn-outline-success mt-4" %>
+            </div>
+          <% end %>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
