@@ -21,6 +21,10 @@
             開演時間：<%= @review.time.strftime('%H:%M') %>
           </div>
 
+          <div class="review-show-right">
+              <%= link_to "投稿編集", edit_admin_review_path(@review.id), class:"btn btn-outline-success" %>
+          </div>
+
         </div>
       </section>
 
@@ -35,11 +39,11 @@
       <section class="review-show-bottom">
         <div class="flex-row">
           <div class="btn-group-vertical">
-            <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+            <!--感想考察が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
             <%if @review.body.nil? %>
               <%= @review.body %>
             <% else %>
-              <!--紹介文が「空」じゃない時は正常に反映する-->
+              <!--感想考察が「空」じゃない時は正常に反映する-->
               <%= safe_join(@review.body.split("\n"),tag(:br)) %>
             <%end %>
           </div>

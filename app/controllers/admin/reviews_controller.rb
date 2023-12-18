@@ -18,4 +18,27 @@ class Admin::ReviewsController < ApplicationController
     @comments = @review.review_comments.order(created_at: :desc)
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    @customer = @review.customer
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    @review.customer_id = current_admin.id
+    if @review.update(review_params)
+      flash[:edit] = "ステータス変更に成功しました。"
+      redirect_to admin_review_path(@review.id)
+    else
+      flash[:edit_danger] = "ステータス変更に失敗しました。"
+      redirect_to admin_customer_path(@review.customer_id)
+    end
+  end
+
+   private
+
+  def review_params
+    params.require(:review).permit(:status)
+  end
+
 end
