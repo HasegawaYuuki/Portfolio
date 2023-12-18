@@ -1,6 +1,6 @@
 <!--ネタバレなし @not_spoiler_review = @customer.reviews.where(status: :not_spoiler)-->
 
-<div class="row">
+<div class="row tab-frame">
   <% if not_spoiler_review.exists? %>
     <% not_spoiler_review.each do |not_spoiler_review| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">

@@ -1,24 +1,24 @@
 <!--ネタバレあり @spoiler_review = @customer.reviews.where(status: :spoiler)-->
 
-<div class="row">
+<div class="row tab-frame">
   <% if spoiler_review.exists? %>
     <% spoiler_review.each do |spoiler_review| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <div class="card mx-auto mt-4 shadow-lg">
-  
+
           <div class="card-header">
             <%= link_to admin_customer_path(spoiler_review.customer.id) do %>
               <%= image_tag spoiler_review.customer.get_image(80,80), class:"rounded-circle" %>
               <%= spoiler_review.customer.name %>
             <% end %>
           </div>
-  
+
           <div>
             <%= link_to admin_review_path(spoiler_review.id) do %>
               <h5 class="card-title text-center mt-3"><%= spoiler_review.title %><br /><%= spoiler_review.sub_title %></h5>
             <% end %>
           </div>
-  
+
           <div class="card-body">
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><%= spoiler_review.body.truncate(35) %></li>
@@ -27,12 +27,12 @@
               <li class="list-group-item">開演時間：<%= spoiler_review.time.strftime('%H:%M') %></li>
           </ul>
           </div>
-  
+
           <div class="card-body text-center">
             <i class="fa-solid fa-tag"></i>
             <%= spoiler_review.tags.map(&:name).join(', ') %>
           </div>
-  
+
         </div>
       </div>
     <% end %>

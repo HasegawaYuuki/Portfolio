@@ -1,6 +1,6 @@
 <!--下書き @draft_review = @customer.reviews.where(status: :draft)-->
 
-<div class="row">
+<div class="row tab-frame">
   <% if draft_review.exists? %>
     <% draft_review.each do |draft_review| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
