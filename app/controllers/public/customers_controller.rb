@@ -36,10 +36,15 @@ class Public::CustomersController < ApplicationController
     @favorite_reviews = Review.find(favorites)
   end
 
+  def check
+    @customer = current_customer
+  end
+
   # 退会機能
   def withdraw
     current_customer.update(is_active: false)
     reset_session
+    flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
 
@@ -55,7 +60,7 @@ class Public::CustomersController < ApplicationController
       redirect_to customer_path(current_customer.id)
     end
   end
-  
-  
+
+
 
 end

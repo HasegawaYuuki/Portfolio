@@ -15,7 +15,7 @@
 
         <div class="flex-row">
           <div class="review-show-left">
-            <%= image_tag @customer.get_image(100,100) %>
+            <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
             <br />
             <%= @customer.name %>
           </div>
@@ -42,7 +42,7 @@
       <section class="review-show-bottom">
         <div class="flex-row">
           <% @review.review_images.each do |review_images| %>
-            <%= image_tag review_images.variant(resize: '300x500').processed %>
+            <%= image_tag review_images.variant(resize: '250x500').processed %>
           <% end %>
         </div>
       </section>
@@ -50,7 +50,13 @@
       <section class="review-show-bottom">
         <div class="flex-row">
           <div class="btn-group-vertical">
-            <%= @review.body %>
+            <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+            <%if @review.body.nil? %>
+              <%= @review.body %>
+            <% else %>
+              <!--紹介文が「空」じゃない時は正常に反映する-->
+              <%= safe_join(@review.body.split("\n"),tag(:br)) %>
+            <%end %>
           </div>
         </div>
       </section>
@@ -58,7 +64,7 @@
       <div class="review-comment" id="review_comment">
         <%= render "public/review_comments/comment", review: @review %>
       </div>
-
+      <br />
       <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
 
     </div>

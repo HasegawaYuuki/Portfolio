@@ -1,31 +1,50 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h3>投稿詳細</h3>
+      <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
 
-      <div class="card">
-        <div class="card-body">
-          <%= image_tag @customer.get_image(80,80) %>
-          <%= @customer.name %>
-          <%#= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-success" %>
-          <div class="card-title">
-            <%= @review.status_i18n %>
+      <section class="review-show-top">
+        <div class="flex-row">
+          <div class="review-show-left">
+            <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
+            <br />
+            <%= @customer.name %>
           </div>
-          <div class="card-subtitle">
-            <%= @review.title %>
-            <%= @review.sub_title %>
-          </div>
-          <%= @review.body %>
-          <%= @review.venue_name %>
 
-          <% @tags.each do |tag| %>
-            <i class="fa-solid fa-tag"><%=tag.name%><%="(#{tag.reviews.count})" %></i>
-          <% end %>
-          <!--<div id="favorite_btn_<%#= @review.id %>">-->
-            <%#= render "public/favorites/btn", review: @review %>
-          <!--</div>-->
+          <div class="review-show-right">
+            タイトル：<%= @review.title %><%= @review.sub_title %>
+            <br />
+            会場名：<%= @review.venue_name %>
+            <br />
+            公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+            <br />
+            開演時間：<%= @review.time.strftime('%H:%M') %>
+          </div>
+
         </div>
-      </div>
+      </section>
+
+      <section class="review-show-bottom">
+        <div class="flex-row">
+          <% @review.review_images.each do |review_images| %>
+            <%= image_tag review_images.variant(resize: '250x500').processed %>
+          <% end %>
+        </div>
+      </section>
+
+      <section class="review-show-bottom">
+        <div class="flex-row">
+          <div class="btn-group-vertical">
+            <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+            <%if @review.body.nil? %>
+              <%= @review.body %>
+            <% else %>
+              <!--紹介文が「空」じゃない時は正常に反映する-->
+              <%= safe_join(@review.body.split("\n"),tag(:br)) %>
+            <%end %>
+          </div>
+        </div>
+      </section>
 
       <div id="review_comment">
         <%= render "admin/review_comments/comment", review: @review %>

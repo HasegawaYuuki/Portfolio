@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    # 退会確認画面
+    get  '/customers/check' => 'customers#check'
+    # 論理削除用のルーティング
+    patch  '/customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
         get "followings" => "relationships#followings", as: "followings"
@@ -50,10 +54,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "search_tag" => "reviews#search_tag"
     get 'about' => 'homes#about', as: 'about'
-    # 退会確認画面
-    get  '/customers/check' => 'customers#check'
-    # 論理削除用のルーティング
-    patch  '/customers/withdraw' => 'customers#withdraw'
   end
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

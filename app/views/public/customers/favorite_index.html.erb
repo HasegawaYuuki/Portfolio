@@ -1,13 +1,13 @@
 <div class="container mt-5">
   <h3>ブックマーク一覧</h3>
-  <div class="row row-cols-4">
+  <div class="row row-cols-3">
     <% @favorite_reviews.each do |favorite_review| %>
       <div class="col mb-4">
         <div class="card mx-auto mt-4 shadow-lg">
 
           <div class="card-header">
             <%= link_to customer_path(favorite_review.customer.id) do %>
-              <%= image_tag favorite_review.customer.get_image(80,80) %>
+              <%= image_tag favorite_review.customer.get_image(80,80), class:"rounded-circle" %>
               <%= favorite_review.customer.name %>
             <% end %>
           </div>
