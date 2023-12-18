@@ -46,9 +46,15 @@ $dark: #a8a8ff;
 .open > .dropdown-toggle.btn-outline-success.focus,
 .btn-outline-success.disabled:hover, .btn-outline-success[disabled]:hover, fieldset[disabled] .btn-outline-success:hover,
 .btn-outline-success.disabled:focus, .btn-outline-success[disabled]:focus, fieldset[disabled] .btn-outline-success:focus,
-.btn-outline-success.disabled.focus, .btn-outline-success[disabled].focus, fieldset[disabled] .btn-outline-success.focus {
+.btn-outline-success.disabled.focus, .btn-outline-success[disabled].focus, fieldset[disabled] .btn-outline-success.focus,
+.btn-outline-success:not(:disabled):not(.disabled):active{
     background: $success; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
     color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border-color: $success;
+}
+
+.btn-outline-success:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem #ffcb07;
 }
 
 .btn-outline-danger {
@@ -79,11 +85,13 @@ $dark: #a8a8ff;
 .btn-outline-info:not(:disabled):not(.disabled):active{
     background: $info; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
     color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border-color: $info;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus {
   box-shadow: 0 0 0 0.2rem #ffcb07;
 }
+
 .btn-outline-light {
   color: $light;
   border-color: $light;
@@ -104,7 +112,8 @@ body {
 }
 
 .header {
-  background-color: #e60033;
+  background-color: #a22041;
+  color: $info;
 }
 
 .header-search {
@@ -160,4 +169,23 @@ body {
 
 .nav-tabs .nav-link.active {
   border-bottom: solid 1px black;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+  border-color: black;
+}
+
+.nav-tabs .nav-link {
+  border: solid 1px black;
+  background-color: #a22041;
+  color: $info;
+}
+
+.tab-frame {
+  border: solid 1px black;
+  background-color: #a22041;
+}
+
+.draft-text {
+  color: $info;
 }
