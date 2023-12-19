@@ -147,6 +147,8 @@ body {
 
 .nav-tabs .nav-link.active {
   border-bottom: solid 1px black;
+  background-color: #a22041;
+  color: $info;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
@@ -155,8 +157,8 @@ body {
 
 .nav-tabs .nav-link {
   border: solid 1px black;
-  background-color: #a22041;
-  color: $info;
+  background-color: #fde8d0;
+  color: black;
 }
 
 .tab-frame {
