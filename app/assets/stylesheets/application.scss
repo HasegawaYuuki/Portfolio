@@ -145,37 +145,10 @@ body {
   width: 170px;
 }
 
-
-// comment(admin)
-.flex-comment {
-  height: 80px;
-  width: 170px;
-}
-
-.flex-comment-text {
-  height: 80px;
-  width: 170px;
-  display: flex;
-  align-items: center;
-}
-
-.favolit-btn {
-  font-size: 20px
-}
-
-
-// comment(customer)
-
-.flex-comment:nth-child(1) {
-  width: 100px;
-}
-
-.flex-comment:nth-child(2) {
-  width: 400px;
-}
-
 .nav-tabs .nav-link.active {
   border-bottom: solid 1px black;
+  background-color: #a22041;
+  color: $info;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
@@ -184,8 +157,8 @@ body {
 
 .nav-tabs .nav-link {
   border: solid 1px black;
-  background-color: #a22041;
-  color: $info;
+  background-color: #fde8d0;
+  color: black;
 }
 
 .tab-frame {
@@ -195,4 +168,31 @@ body {
 
 .draft-text {
   color: $info;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+  background-color: transparent;
+}
+
+/* 表示しているページ番号のデザイン */
+.page-item.active .page-link {
+  background-color: #a22041;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+  background-color: #a22041;
+  color: #fde8d0;
+}
+
+.favolit-btn {
+  font-size: 20px
 }

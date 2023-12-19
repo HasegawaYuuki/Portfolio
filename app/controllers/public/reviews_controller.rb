@@ -20,8 +20,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
-    @spoiler_review = Review.where(status: :spoiler)
-    @not_spoiler_review = Review.where(status: :not_spoiler)
+    @spoiler_review = Review.where(status: :spoiler).order(created_at: :desc)
+    @not_spoiler_review = Review.where(status: :not_spoiler).order(created_at: :desc)
     @tag_list = Tag.all
     @customer = current_customer
   end
@@ -74,7 +74,7 @@ class Public::ReviewsController < ApplicationController
     @not_spoiler_review = @tag.reviews.where(status: :not_spoiler)
     @spoiler_review = @tag.reviews.where(status: :spoiler)
   end
-  
+
   def complete
   end
 

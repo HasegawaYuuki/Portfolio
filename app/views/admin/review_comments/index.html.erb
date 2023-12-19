@@ -1,32 +1,39 @@
 <div class="container mt-5">
   <h3>コメント一覧</h3>
+
   <section>
-    <div class="flex-row">
-      <div class="flex-comment">ユーザー名</div>
-      <div class="flex-comment">公演名</div>
-      <div class="flex-comment">コメント</div>
-      <div class="flex-comment">投稿日</div>
-      <div class="flex-comment"></div>
+    <div class="flex-row comment-title">
+      <div class="col-2 flex-comment">ユーザー名</div>
+      <div class="col-2 flex-comment">公演名</div>
+      <div class="col-5 flex-comment">コメント</div>
+      <div class="col-2 flex-comment">投稿日</div>
+      <div class="col-1 flex-comment"></div>
     </div>
-    
+
     <% @review_comments.each do |review_comment| %>
       <div class="flex-row">
-        <div class="flex-comment">
+        <div class="col-2 flex-comment">
           <%= @customers.find(review_comment.customer_id).name %>
         </div>
-        <div class="flex-comment">
+        <div class="col-2 flex-comment">
           <%= @reviews.find(review_comment.review_id).title %>
         </div>
-        <div class="flex-comment">
+        <div class="col-5 flex-comment">
           <%= review_comment.comment %>
         </div>
-        <div class="flex-comment">
+        <div class="col-2 flex-comment">
           <%= review_comment.created_at.strftime('%Y/%m/%d') %>
         </div>
-        <div class="flex-comment">
+        <div class="col-1 flex-comment">
           <%= link_to '削除', admin_review_comment_path(review_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-danger" %>
         </div>
       </div>
     <% end %>
   </section>
+
+  <div class="mx-auto">
+    <div class="pagination">
+      <%= paginate @review_comments %>
+    </div>
+  </div>
 </div>

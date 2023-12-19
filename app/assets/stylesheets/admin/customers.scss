@@ -1,3 +1,22 @@
 // Place all the styles related to the admin/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.flex-comment {
+  height: 60px;
+  width: 170px;
+}
+
+.comment-title {
+  height: 30px;
+  border-bottom: solid 1px black;
+}
+
+.flex-comment-text {
+  height: 80px;
+  width: 170px;
+  display: flex;
+  align-items: center;
+}
+
