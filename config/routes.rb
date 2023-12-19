@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: [:index, :show, :edit, :update]
     resources :review_comments
+    resources :reports, only: [:index]
     root to: 'homes#top'
   end
 
@@ -48,6 +49,8 @@ Rails.application.routes.draw do
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
       resources :review_comments, only: [:create, :destroy]
+      resource :reports, only: [:new, :create]
+      get :complete, on: :member
     end
     resources :tags
     resources :taggings

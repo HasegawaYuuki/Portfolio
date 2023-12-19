@@ -2,9 +2,9 @@ class Public::ReviewCommentsController < ApplicationController
 
   def create
     @review = Review.find(params[:review_id])
-    comment = current_customer.review_comments.new(review_comment_params)
-    comment.review_id = @review.id
-    comment.save
+    @comment = @review.review_comments.new(review_comment_params)
+    @comment.customer_id = current_customer.id
+    @comment.save
     flash.now[:notice] = "コメントの投稿に成功しました。"
     #redirect_back(fallback_location: review_path(@review.id))
   end

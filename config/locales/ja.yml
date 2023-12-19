@@ -7,6 +7,10 @@ ja:
         not_spoiler: "ネタバレなし"
         spoiler: "ネタバレあり"
         draft: "下書き"
+      report_status:
+        wait: "対応待ち"
+        hold: "保留中"
+        complet: "対応完了"
   activerecord:
     errors:
       messages:

@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :customer
   has_many :review_comments, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true
@@ -53,10 +54,11 @@ class Review < ApplicationRecord
   # 検索機能のためのメソッド
   def self.looks(search, word)
     if search == "partial_match"
-      @spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
-      @not_spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
+      @spoiler_reviews= Review.where("title LIKE? OR sub_title LIKE ?", "%#{word}%", "%#{word}%")
+      @not_spoiler_reviews= Review.where("title LIKE? OR sub_title LIKE ?", "%#{word}%", "%#{word}%")
     end
   end
 
   enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
+  enum report_status: { wait: 0, hold: 1, complet: 2 }
 end

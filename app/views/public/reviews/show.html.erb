@@ -29,10 +29,10 @@
             <br />
             開演時間：<%= @review.time.strftime('%H:%M') %>
           </div>
-          
+
           <div class="review-show-right">
             <% if @customer === current_customer %>
-              <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success" %>
+              <%= link_to "投稿編集", edit_review_path(@review.id), class:"btn btn-outline-success mt-2" %>
               <br />
               <%= link_to "投稿削除", review_path, method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger mt-2" %>
             <% end %>
@@ -48,9 +48,10 @@
         </div>
       </section>
 
-      <section class="review-show-bottom">
+      <section class="review-show-bottom card p-3">
         <div class="flex-row">
           <div class="btn-group-vertical">
+            <h6>感想・考察</h6>
             <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
             <%if @review.body.nil? %>
               <%= @review.body %>
@@ -67,6 +68,10 @@
       </div>
       <br />
       <%= render "public/review_comments/form", review: @review, review_comment: @review_comment %>
+
+      <div class="col-lg-5 col-md-7 col-sm-7 col-8 mb-lg-5 my-sm-3 my-3 background">
+        <strong><%= link_to "不適切な投稿として報告する" ,new_review_reports_path(@review), class: "text-dark" %></strong>
+      </div>
 
     </div>
   </div>
