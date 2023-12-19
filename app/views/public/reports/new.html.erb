@@ -12,7 +12,7 @@
   <div class= "row">
     <div class= "col-6 offset-3 mt-5">
       <h4>管理者に報告する</h4>
-      <%= form_with model: [@item, @report] do |f| %>
+      <%= form_with model: [@review, @report] do |f| %>
         <%= f.text_area :report, class: 'form-control', rows: '6', placeholder: "報告内容を記載" %><br>
         <%= f.submit "報告する", class: "btn btn-outline-success" %>
       <% end %>

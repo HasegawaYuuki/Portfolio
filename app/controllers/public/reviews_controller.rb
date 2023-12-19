@@ -74,6 +74,9 @@ class Public::ReviewsController < ApplicationController
     @not_spoiler_review = @tag.reviews.where(status: :not_spoiler)
     @spoiler_review = @tag.reviews.where(status: :spoiler)
   end
+  
+  def complete
+  end
 
   private
 

@@ -38,7 +38,7 @@ class Admin::ReviewsController < ApplicationController
    private
 
   def review_params
-    params.require(:review).permit(:status)
+    params.require(:review).permit(:status, :report_status)
   end
 
 end

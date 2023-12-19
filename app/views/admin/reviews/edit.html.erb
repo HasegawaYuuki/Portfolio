@@ -22,6 +22,25 @@
               開演時間：<%= @review.time.strftime('%H:%M') %>
             </div>
 
+            <section class="ml-5">
+              <div class="row">
+                <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
+                  <div class="col">
+                    <label>ネタバレ有無・下書き：</label>
+                    <%= f.radio_button :status, Review.statuses.key(0) %>
+                    <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
+                    <%= f.radio_button :status, Review.statuses.key(1) %>
+                    <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
+                  </div>
+                  <div class="col">
+                    <label>報告ステータス：</label>
+                    <%= f.select :report_status,Review.report_statuses.keys.map { |k| [t("enums.review.report_status.#{k}"), k] }, {} %>
+                  </div>
+              </div>
+                <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
+              <% end %>
+            </section>
+
 
           </div>
         </section>
@@ -48,23 +67,7 @@
           </div>
         </section>
 
-        <section class="mt-3">
-          <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
 
-            <label>ネタバレ有無・下書き</label>
-            <br />
-            <%= f.radio_button :status, Review.statuses.key(0) %>
-            <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
-            <%= f.radio_button :status, Review.statuses.key(1) %>
-            <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
-            <%= f.radio_button :status, Review.statuses.key(2) %>
-            <%= f.label :status, Review.statuses_i18n[:draft], value: Review.statuses.key(2) %>
-            <br />
-            <div>
-              <%= f.submit '更新する', class: "btn btn-outline-success mt-4" %>
-            </div>
-          <% end %>
-        </section>
       </div>
     </div>
   </div>

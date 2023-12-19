@@ -1,34 +1,47 @@
-<div class= "container py-5 px-sm-0">
-  
-  <% if @reports.blank? %>
-    <h4 class= "col-4 offset-4 mt-5 background text-center">報告はありません</h4>
-  <% end %>
-  
-  <% @reports.each do |report| %>
-    <div class= "row">
-      <div class="col-lg-8 col-12 offset-lg-2">
-       <div class="col-12 table-responsive-sm">
-        <table class="table text-nowrap table-bordered">
-         <!-- 不適切な投稿のテーブル -->
-       </table>
-       </div>
+<div class= "container mt-5">
+
+  <% if @reports.exists? %>
+
+    <section>
+      <div class="flex-row">
+        <div class="flex-comment">投稿ユーザー名</div>
+        <div class="flex-comment">報告ユーザー名</div>
+        <div class="flex-comment">投稿詳細</div>
+        <div class="flex-comment">ステータス</div>
+        <div class="flex-comment">投稿日</div>
+        <div class="flex-comment">報告日</div>
+        <div class="flex-comment"></div>
       </div>
+
+      <% @reports.each do |report| %>
+        <div class="flex-row">
+          <div class="flex-comment">
+            <%= @customers.find(report.review.customer_id).name %>
+          </div>
+          <div class="flex-comment">
+            <%= @customers.find(report.customer_id).name %>
+          </div>
+          <div class="flex-comment">
+            <%= link_to "投稿詳細", admin_review_path(report.review_id) %>
+          </div>
+          <div class="flex-comment">
+            <%= report.review.report_status_i18n %>
+          </div>
+          <div class="flex-comment">
+            <%= report.review.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="flex-comment">
+          <%= report.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="flex-comment">
+            <%#= link_to '削除', admin_review_comment_path(review_comment), method: :delete, data: { confirm: '本当に削除しますか?' },class: "btn btn-outline-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  <% else %>
+    <div class="draft-text d-flex align-items-center justify-content-center", style="height:250px; margin: auto;">
+      報告はありません
     </div>
-   <div class= "row justify-content-around text-center align-middle">
-     <div class="col-lg-2 col-md-5 col-sm-4 col-8 mb-lg-5 my-sm-3 my-3 background"><%= report.review.report_status_i18n %></div>
-    <div class="col-lg-2 col-md-5 col-sm-4 col-8 mb-lg-5 my-sm-3 my-3 background"><span>投稿日　</span><%= report.review.created_at.strftime('%Y/%m/%d') %></div>
-   </div>
-   <div class= "row">
-     <div class= "col-lg-8 col-12 offset-lg-2">
-      <div class="col-12 table-responsive-sm">
-        <table class="table text-nowrap table-bordered">
-          <!-- 報告者のテーブル -->
-        </table>
-      </div>
-     </div>
-   </div>
-   <div class= "row">
-    <div class="col-md-2 col-6 offset-md-8 offset-3 mb-4 mt-lg-0 mt-3 align-middle text-center background"><span>報告日　</span><%= report.created_at.strftime('%Y/%m/%d') %></div>
-   </div>
   <% end %>
 </div>
