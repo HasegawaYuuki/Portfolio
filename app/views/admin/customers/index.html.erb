@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <h3>会員一覧</h3>
+  
   <section>
     <% @customers.each do |customer| %>
     <div class="flex-row">
@@ -23,4 +24,10 @@
     </div>
     <% end %>
   </section>
+
+  <div class="mx-auto">
+    <div class="pagination">
+      <%= paginate @customers %>
+    </div>
+  </div>
 </div>

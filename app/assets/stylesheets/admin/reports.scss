@@ -1,3 +1,37 @@
 // Place all the styles related to the admin/reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.flex-report {
+  height: 60px;
+  width: 170px;
+}
+
+.report-title {
+  height: 30px;
+  border-bottom: solid 1px black;
+}
+
+.flex-report:nth-child(1) {
+  width: 400px;
+}
+
+.flex-report:nth-child(2) {
+  width: 400px;
+}
+
+.flex-report:nth-child(3) {
+  width: 400px;
+}
+
+.flex-report:nth-child(4) {
+  width: 400px;
+}
+
+.flex-report:nth-child(5) {
+  width: 400px;
+}
+
+.flex-report:nth-child(6) {
+  width: 400px;
+}
