@@ -6,40 +6,46 @@
 
         <section class="review-show-top">
           <div class="flex-row">
-            <div class="review-show-left">
-              <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
-              <br />
-              <%= @customer.name %>
-            </div>
-
-            <div class="review-show-right">
-              タイトル：<%= @review.title %><%= @review.sub_title %>
-              <br />
-              会場名：<%= @review.venue_name %>
-              <br />
-              公演日：<%= @review.date.strftime('%Y/%m/%d') %>
-              <br />
-              開演時間：<%= @review.time.strftime('%H:%M') %>
-            </div>
-
-            <section class="ml-5">
-              <div class="row">
-                <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
-                  <div class="col">
-                    <label>ネタバレ有無・下書き：</label>
-                    <%= f.radio_button :status, Review.statuses.key(0) %>
-                    <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
-                    <%= f.radio_button :status, Review.statuses.key(1) %>
-                    <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
-                  </div>
-                  <div class="col">
-                    <label>報告ステータス：</label>
-                    <%= f.select :report_status,Review.report_statuses.keys.map { |k| [t("enums.review.report_status.#{k}"), k] }, {} %>
-                  </div>
+            <div class="col-2">
+              <div class="review-show-left">
+                <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
+                <br />
+                <%= @customer.name %>
               </div>
-                <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
-              <% end %>
-            </section>
+            </div>
+
+            <div class="col-4">
+              <div class="review-show-left">
+                タイトル：<%= @review.title %><%= @review.sub_title %>
+                <br />
+                会場名：<%= @review.venue_name %>
+                <br />
+                公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+                <br />
+                開演時間：<%= @review.time.strftime('%H:%M') %>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <section class="admin-review-show-right">
+                <div class="row">
+                  <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
+                    <div class="col pl-0">
+                      <label>ネタバレ有無・下書き：</label>
+                      <%= f.radio_button :status, Review.statuses.key(0) %>
+                      <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
+                      <%= f.radio_button :status, Review.statuses.key(1) %>
+                      <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
+                    </div>
+                    <div class="col pl-0">
+                      <label>報告ステータス：</label>
+                      <%= f.select :report_status,Review.report_statuses.keys.map { |k| [t("enums.review.report_status.#{k}"), k] }, {} %>
+                    </div>
+                    <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
+                  <% end %>
+                </div>
+              </section>
+            </div>
 
 
           </div>
