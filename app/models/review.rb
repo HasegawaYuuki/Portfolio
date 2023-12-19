@@ -54,8 +54,8 @@ class Review < ApplicationRecord
   # 検索機能のためのメソッド
   def self.looks(search, word)
     if search == "partial_match"
-      @spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
-      @not_spoiler_reviews= Review.where("title LIKE?", "%#{word}%")
+      @spoiler_reviews= Review.where("title LIKE? OR sub_title LIKE ?", "%#{word}%", "%#{word}%")
+      @not_spoiler_reviews= Review.where("title LIKE? OR sub_title LIKE ?", "%#{word}%", "%#{word}%")
     end
   end
 
