@@ -19,7 +19,7 @@
           <div class="flex-comment">
             <div id="review_comment">
               <% if review_comment.customer == current_customer %>
-                <%= link_to "削除", review_review_comment_path(review, review_comment), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-danger", remote:true, data: {"turbolinks" => false}  %>
+                <%= link_to "削除", review_review_comment_path(review, review_comment), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger", remote:true, data: {"turbolinks" => false}  %>
               <% end %>
             </div>
           </div>
