@@ -1,4 +1,5 @@
 class Admin::RelationshipsController < ApplicationController
+  before_action :authenticate_admin!
 
   def followings
     @customer = Customer.find_by(id: params[:customer_id])

@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
+      <h3>投稿詳細(<%= @review.status_i18n %>)  <%= link_to "投稿編集", edit_admin_review_path(@review.id), class:"btn btn-outline-success" %></h3>
+
 
       <section class="review-show-top">
         <div class="flex-row">
@@ -11,7 +12,7 @@
             <%= @customer.name %>
           </div>
 
-          <div class="review-show-right">
+          <div class="review-show-right ml-3">
             タイトル：<%= @review.title %><%= @review.sub_title %>
             <br />
             会場名：<%= @review.venue_name %>
@@ -20,11 +21,6 @@
             <br />
             開演時間：<%= @review.time.strftime('%H:%M') %>
           </div>
-
-          <div class="review-show-right">
-              <%= link_to "投稿編集", edit_admin_review_path(@review.id), class:"btn btn-outline-success" %>
-          </div>
-
         </div>
       </section>
 
@@ -50,10 +46,19 @@
         </div>
       </section>
 
-      <div id="review_comment">
-        <%= render "admin/review_comments/comment", review: @review %>
-      </div>
-
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+      <%= render "admin/reports/show_index", review: @review %>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+      <%= render "admin/review_comments/comment", review: @review %>
+    </div>
+  </div>
+
 </div>

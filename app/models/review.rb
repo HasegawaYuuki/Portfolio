@@ -60,5 +60,4 @@ class Review < ApplicationRecord
   end
 
   enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
-  enum report_status: { wait: 0, hold: 1, complet: 2 }
 end

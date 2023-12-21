@@ -1,0 +1,19 @@
+<section class="review-show-bottom">
+  <div class="card">
+    <div class="card-header">
+      <h6>報告一覧  <%= review.reports.count %>件</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% review.reports.each do |report| %>
+        <li class="list-group-item">
+          <%= report.id %>
+          <%= image_tag report.customer.get_image(50,50) %>
+          <%= report.report %>
+          <%= report.report_status_i18n %>
+          <br />
+          <%= report.customer.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

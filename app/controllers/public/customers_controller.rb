@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def index
     @customer = current_customer
-    @customers = Customer.where(is_active: true).order(created_at: :desc)
+    @customers = Customer.all.where(is_active: true).page(params[:page]).per(10)
   end
 
   def show

@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2023_12_18_165343) do
     t.integer "customer_id", null: false
     t.integer "review_id", null: false
     t.text "report", null: false
+    t.integer "report_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -108,7 +109,6 @@ ActiveRecord::Schema.define(version: 2023_12_18_165343) do
     t.integer "status", default: 0, null: false
     t.date "date"
     t.time "time"
-    t.integer "report_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
