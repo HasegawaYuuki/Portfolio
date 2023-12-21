@@ -6,14 +6,33 @@
     <ul class="list-group list-group-flush">
       <% review.reports.each do |report| %>
         <li class="list-group-item">
-          <%= report.id %>
-          <%= image_tag report.customer.get_image(50,50) %>
-          <%= report.report %>
-          <%= report.report_status_i18n %>
-          <br />
-          <%= report.customer.name %>
+          <section class="review-show-top">
+            <div class="flex-row">
+              <div class="review-show-left">
+                <%= report.id %>
+              </div>
+
+              <div class="report-show-right ml-3">
+                <%= image_tag report.customer.get_image(50,50) %>
+                <br />
+                <%= report.customer.name %>
+              </div>
+
+              <div class="report-show-right ml-5">
+                <%= report.report %>
+              </div>
+
+              <div class="report-show-right ml-5">
+                <%= link_to edit_admin_report_path(report.id) do %>
+                  <%= report.report_status_i18n %>
+                <% end %>
+              </div>
+            </div>
+          </section>
         </li>
       <% end %>
     </ul>
   </div>
 </section>
+
+

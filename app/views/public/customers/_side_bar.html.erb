@@ -9,6 +9,18 @@
           <%= link_to "新規投稿", new_review_path, class:"btn btn-outline-success" %>
           <%= link_to "会員情報編集", edit_customer_path(customer.id), class:"btn btn-outline-success mt-2" %>
           <%= link_to "ブックマーク一覧", favorite_index_customer_path(current_customer), class:"btn btn-outline-success mt-2" %>
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="new_review_path">新規投稿</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>

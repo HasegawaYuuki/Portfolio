@@ -13,7 +13,7 @@
 
     <section>
       <div class="flex-row report-title">
-        <div class="flex-report"></div>
+        <div class="flex-report-id mr-3"></div>
         <div class="flex-report">投稿ユーザー名</div>
         <div class="flex-report">報告ユーザー名</div>
         <div class="flex-report">投稿詳細</div>
@@ -24,7 +24,7 @@
 
       <% @reports.each do |report| %>
         <div class="flex-row">
-          <div class="flex-report">
+          <div class="flex-report-id mr-3">
             <%= report.id %>
           </div>
           <div class="flex-report">

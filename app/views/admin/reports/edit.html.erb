@@ -23,10 +23,9 @@
             </div>
 
             <div class="review-show-right ml-5">
-              <label>報告ステータス：</label>
               <%= form_with model: @report, url: admin_report_path, method: :patch do |f| %>
-                <%= f.select :report_status,Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] }, {} %>
-                <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
+                報告ステータス：<%= f.select :report_status,Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] }, {} %>
+                <%= f.submit '更新する', class: "btn btn-outline-success btn-sm mt-2" %>
               <% end %>
             </div>
           </div>
@@ -44,7 +43,7 @@
         <section class="review-show-bottom">
           <div class="flex-row">
             <div class="btn-group-vertical">
-              <h6>感想・考察</h6>
+              <h6>感想・考察：</h6>
               <!--感想考察が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
               <%if @report.review.body.nil? %>
                 <%= @report.review.body %>
