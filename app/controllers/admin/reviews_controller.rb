@@ -1,4 +1,5 @@
 class Admin::ReviewsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @tag_list = Tag.all
@@ -27,10 +28,10 @@ class Admin::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.customer_id = current_admin.id
     if @review.update(review_params)
-      flash[:edit] = "ステータス変更に成功しました。"
+      flash[:notice] = "ステータス変更に成功しました。"
       redirect_to admin_review_path(@review.id)
     else
-      flash[:edit_danger] = "ステータス変更に失敗しました。"
+      flash[:notice] = "ステータス変更に失敗しました。"
       redirect_to admin_customer_path(@review.customer_id)
     end
   end
@@ -38,7 +39,7 @@ class Admin::ReviewsController < ApplicationController
    private
 
   def review_params
-    params.require(:review).permit(:status, :report_status)
+    params.require(:review).permit(:status)
   end
 
 end

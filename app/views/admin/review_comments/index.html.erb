@@ -16,7 +16,8 @@
           <%= @customers.find(review_comment.customer_id).name %>
         </div>
         <div class="col-2 flex-comment">
-          <%= @reviews.find(review_comment.review_id).title %>
+          <%= @reviews.find(review_comment.review_id).title %><br />
+          <%= @reviews.find(review_comment.review_id).sub_title %>
         </div>
         <div class="col-5 flex-comment">
           <%= review_comment.comment %>

@@ -3,8 +3,15 @@
     <div class="col-3">
       <%= render 'public/customers/side_bar', customer: @customer %>
     </div>
+
     <div class="col-9">
       <%= render 'public/customers/list', customers: @customers %>
+      <div class="mx-auto">
+        <div class="pagination">
+          <%= paginate @customers %>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

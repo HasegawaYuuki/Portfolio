@@ -28,8 +28,8 @@ Rails.application.routes.draw do
       end
     end
     resources :reviews, only: [:index, :show, :edit, :update]
-    resources :review_comments
-    resources :reports, only: [:index]
+    resources :review_comments, only: [:index, :destroy]
+    resources :reports, only: [:index, :edit, :update]
     root to: 'homes#top'
   end
 

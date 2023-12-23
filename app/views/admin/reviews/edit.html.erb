@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col">
       <div class="card p-5">
-        <h3>投稿詳細(<%= @review.status_i18n %>)</h3>
+        <h3>投稿編集(<%= @review.status_i18n %>)</h3>
 
         <section class="review-show-top">
           <div class="flex-row">
@@ -36,12 +36,7 @@
                       <%= f.label :status, Review.statuses_i18n[:not_spoiler], value: Review.statuses.key(0) %>
                       <%= f.radio_button :status, Review.statuses.key(1) %>
                       <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
-                    </div>
-                    <div class="col pl-0">
-                      <label>報告ステータス：</label>
-                      <%= f.select :report_status,Review.report_statuses.keys.map { |k| [t("enums.review.report_status.#{k}"), k] }, {} %>
-                    </div>
-                    <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
+                      <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
                   <% end %>
                 </div>
               </section>

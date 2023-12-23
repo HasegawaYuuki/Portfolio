@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col">
+
+      <h3>報告ステータス編集</h3>
+
+        <section class="review-show-top">
+          <div class="flex-row">
+            <div class="review-show-left">
+              <%= image_tag @report.review.customer.get_image(80,80), class:"rounded-circle" %>
+              <br />
+              <%= @report.review.customer.name %>
+            </div>
+
+            <div class="review-show-right ml-3">
+              タイトル：<%= @report.review.title %><%= @report.review.sub_title %>
+              <br />
+              会場名：<%= @report.review.venue_name %>
+              <br />
+              公演日：<%= @report.review.date.strftime('%Y/%m/%d') %>
+              <br />
+              開演時間：<%= @report.review.time.strftime('%H:%M') %>
+            </div>
+
+            <div class="review-show-right ml-5">
+              <%= form_with model: @report, url: admin_report_path, method: :patch do |f| %>
+                報告ステータス：<%= f.select :report_status,Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] }, {} %>
+                <%= f.submit '更新する', class: "btn btn-outline-success btn-sm mt-2" %>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <% @report.review.review_images.each do |review_images| %>
+              <%= image_tag review_images.variant(resize: '250x500').processed %>
+            <% end %>
+          </div>
+        </section>
+
+      <div class="card">
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <div class="btn-group-vertical">
+              <h6>感想・考察：</h6>
+              <!--感想考察が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+              <%if @report.review.body.nil? %>
+                <%= @report.review.body %>
+              <% else %>
+                <!--感想考察が「空」じゃない時は正常に反映する-->
+                <%= safe_join(@report.review.body.split("\n"),tag(:br)) %>
+              <%end %>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+

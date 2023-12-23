@@ -1,6 +1,5 @@
 class Admin::ReviewCommentsController < ApplicationController
-
-class Admin::ReviewCommentsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @review_comments = ReviewComment.all.order(created_at: :desc).page(params[:page]).per(10)
@@ -13,7 +12,5 @@ class Admin::ReviewCommentsController < ApplicationController
     @review_comment.destroy
     redirect_to admin_review_comments_path
   end
-
-end
 
 end

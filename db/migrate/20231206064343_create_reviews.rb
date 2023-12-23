@@ -9,7 +9,6 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.integer :status, null: false, default: 0
       t.date :date
       t.time :time
-      t.integer :report_status, default: 0
 
       t.timestamps
     end

@@ -47,7 +47,8 @@ $dark: #a8a8ff;
 .btn-outline-success.disabled:hover, .btn-outline-success[disabled]:hover, fieldset[disabled] .btn-outline-success:hover,
 .btn-outline-success.disabled:focus, .btn-outline-success[disabled]:focus, fieldset[disabled] .btn-outline-success:focus,
 .btn-outline-success.disabled.focus, .btn-outline-success[disabled].focus, fieldset[disabled] .btn-outline-success.focus,
-.btn-outline-success:not(:disabled):not(.disabled):active{
+.btn-outline-success:not(:disabled):not(.disabled):active,
+.show>.btn-outline-success.dropdown-toggle {
     background: $success; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
     color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
     border-color: $success;
