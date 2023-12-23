@@ -59,5 +59,5 @@ class Review < ApplicationRecord
     end
   end
 
-  enum status: { not_spoiler: 0, spoiler: 1, draft: 2 }
+  enum status: { spoiler_not: 0, spoiler: 1, draft: 2 }
 end

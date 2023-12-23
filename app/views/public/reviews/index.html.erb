@@ -4,7 +4,7 @@
       <h3>投稿一覧</h3>
       <%= render 'public/reviews/tag_list', tag_list: @tag_list %>
       <div class="tab">
-        <%= render 'public/customers/tab', not_spoiler_review: @not_spoiler_review,spoiler_review: @spoiler_review %>
+        <%= render 'public/customers/tab', spoiler_not_review: @spoiler_not_review,spoiler_review: @spoiler_review %>
       </div>
     </div>
   </div>

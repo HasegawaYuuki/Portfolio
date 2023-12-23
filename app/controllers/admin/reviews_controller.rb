@@ -4,7 +4,7 @@ class Admin::ReviewsController < ApplicationController
   def index
     @tag_list = Tag.all
     @spoiler_review = Review.where(status: :spoiler).order(created_at: :desc)
-    @not_spoiler_review = Review.where(status: :not_spoiler).order(created_at: :desc)
+    @spoiler_not_review = Review.where(status: :spoiler_not).order(created_at: :desc)
     @draft_review = Review.where(status: :draft).order(created_at: :desc)
   end
 
