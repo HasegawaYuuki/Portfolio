@@ -21,7 +21,7 @@ class Public::ReviewsController < ApplicationController
 
   def index
     @spoiler_review = Review.where(status: :spoiler).order(created_at: :desc)
-    @not_spoiler_review = Review.where(status: :not_spoiler).order(created_at: :desc)
+    @spoiler_not_review = Review.where(status: :spoiler_not).order(created_at: :desc)
     @tag_list = Tag.all
     @customer = current_customer
   end
@@ -71,7 +71,7 @@ class Public::ReviewsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @not_spoiler_review = @tag.reviews.where(status: :not_spoiler)
+    @spoiler_not_review = @tag.reviews.where(status: :spoiler_)
     @spoiler_review = @tag.reviews.where(status: :spoiler)
   end
 

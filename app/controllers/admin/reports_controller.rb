@@ -9,7 +9,7 @@ class Admin::ReportsController < ApplicationController
       @reports = @reports.where(reports: { report_status: params[:report_status] })
     end
     @customers = Customer.all
-    @not_spoiler_review = Review.where(status: :not_spoiler)
+    @spoiler_not_review = Review.where(status: :spoiler_not)
     @spoiler_review = Review.where(status: :spoiler)
   end
 
