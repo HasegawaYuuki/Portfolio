@@ -5,7 +5,6 @@ class Public::ReviewCommentsController < ApplicationController
     @comment = @review.review_comments.new(review_comment_params)
     @comment.customer_id = current_customer.id
     @comment.save
-    flash.now[:notice] = "コメントの投稿に成功しました。"
     #redirect_back(fallback_location: review_path(@review.id))
   end
 

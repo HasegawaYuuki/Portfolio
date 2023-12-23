@@ -96,8 +96,6 @@ ActiveRecord::Schema.define(version: 2023_12_18_165343) do
     t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
-    t.index ["parent_id"], name: "index_review_comments_on_parent_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -130,5 +128,4 @@ ActiveRecord::Schema.define(version: 2023_12_18_165343) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "review_comments", "review_comments", column: "parent_id"
 end
