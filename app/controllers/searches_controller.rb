@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     @word = params[:word]
 
     @spoiler_review = Review.looks(params[:search], params[:word]).where(status: :spoiler)
-    @poiler_not_sreview = Review.looks(params[:search], params[:word]).where(status: :spoiler_not)
+    @spoiler_not_review = Review.looks(params[:search], params[:word]).where(status: :spoiler_not)
   end
 
 end
