@@ -4,7 +4,7 @@ ja:
   enums:
     review:
       status:
-        spoiler_: "ネタバレなし"
+        spoiler_not: "ネタバレなし"
         spoiler: "ネタバレあり"
         draft: "下書き"
     report:
