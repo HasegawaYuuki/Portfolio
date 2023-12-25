@@ -17,9 +17,9 @@
               <br />
               会場名：<%= @report.review.venue_name %>
               <br />
-              公演日：<%= @report.review.date.strftime('%Y/%m/%d') %>
+              公演日：<%= @report.review.date&.strftime('%Y/%m/%d') %>
               <br />
-              開演時間：<%= @report.review.time.strftime('%H:%M') %>
+              開演時間：<%= @report.review.time&.strftime('%H:%M') %>
             </div>
 
             <div class="review-show-right ml-5">

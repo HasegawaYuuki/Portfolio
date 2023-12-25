@@ -11,7 +11,6 @@ class Public::ReportsController < ApplicationController
     report = current_customer.reports.new(report_params)
     report.review_id = review.id
     if report.save
-      review.update(status: 0)
       flash[:notice] = "管理者に報告しました"
       redirect_to complete_review_path(review)
     else

@@ -26,7 +26,6 @@ class Admin::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.customer_id = current_admin.id
     if @review.update(review_params)
       flash[:notice] = "ステータス変更に成功しました。"
       redirect_to admin_review_path(@review.id)
