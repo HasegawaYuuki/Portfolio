@@ -3,9 +3,11 @@ class Public::ReviewCommentsController < ApplicationController
 
   def create
     @review = Review.find(params[:review_id])
-    @comment = @review.review_comments.new(review_comment_params)
-    @comment.customer_id = current_customer.id
-    @comment.save
+    if review_comment_params["comment"].present?
+      @comment = @review.review_comments.new(review_comment_params)
+      @comment.customer_id = current_customer.id
+      @comment.save
+    end
     #redirect_back(fallback_location: review_path(@review.id))
   end
 

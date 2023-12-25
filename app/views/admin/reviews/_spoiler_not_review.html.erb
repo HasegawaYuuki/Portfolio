@@ -23,8 +23,8 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><%= spoiler_not_review.body.truncate(35) %></li>
               <li class="list-group-item">会場名：<%= spoiler_not_review.venue_name %></li>
-              <li class="list-group-item">公演日：<%= spoiler_not_review.date.strftime('%Y/%m/%d') %></li>
-              <li class="list-group-item">開演時間：<%= spoiler_not_review.time.strftime('%H:%M') %></li>
+              <li class="list-group-item">公演日：<%= spoiler_not_review.date&.strftime('%Y/%m/%d') %></li>
+              <li class="list-group-item">開演時間：<%= spoiler_not_review.time&.strftime('%H:%M') %></li>
             </ul>
           </div>
   
