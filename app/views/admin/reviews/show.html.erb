@@ -4,61 +4,61 @@
       <h3>投稿詳細(<%= @review.status_i18n %>)  <%= link_to "投稿編集", edit_admin_review_path(@review.id), class:"btn btn-outline-success" %></h3>
 
 
-      <section class="review-show-top">
-        <div class="flex-row">
-          <div class="review-show-left">
-            <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
-            <br />
-            <%= @customer.name %>
-          </div>
+      <div class="row">
 
-          <div class="review-show-right ml-3">
-            タイトル：<%= @review.title %><%= @review.sub_title %>
-            <br />
-            会場名：<%= @review.venue_name %>
-            <br />
-            公演日：<%= @review.date.strftime('%Y/%m/%d') %>
-            <br />
-            開演時間：<%= @review.time.strftime('%H:%M') %>
-          </div>
+        <div class="col-12 col-md-3 col-lg-3">
+          <section class="review-show-top">
+            <div class="review-show-left">
+              <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
+              <br />
+              <%= @customer.name %>
+            </div>
+          </section>
         </div>
-      </section>
 
-      <section class="review-show-bottom">
-        <div class="flex-row">
-          <% @review.review_images.each do |review_images| %>
-            <%= image_tag review_images.variant(resize: '250x500').processed %>
-          <% end %>
+        <div class="col-12 col-md-9 col-lg-9">
+          <section class="review-show-top">
+            <div class="review-show-right ml-3">
+              タイトル：<%= @review.title %><%= @review.sub_title %>
+              <br />
+              会場名：<%= @review.venue_name %>
+              <br />
+              公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+              <br />
+              開演時間：<%= @review.time.strftime('%H:%M') %>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
-      <section class="review-show-bottom">
+      <section class="review-show">
         <div class="flex-row">
-          <div class="btn-group-vertical">
-            <!--感想考察が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
-            <%if @review.body.nil? %>
-              <%= @review.body %>
-            <% else %>
-              <!--感想考察が「空」じゃない時は正常に反映する-->
-              <%= safe_join(@review.body.split("\n"),tag(:br)) %>
-            <%end %>
+          <div class="review-item">
+            <% @review.review_images.each do |review_images| %>
+              <%= image_tag review_images.variant(resize: '250x500').processed %>
+            <% end %>
           </div>
         </div>
       </section>
 
+      <div class="row mt-2">
+        <div class="col">
+          <%= render "admin/reviews/body", review: @review %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <%= render "admin/reports/show_index", review: @review %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <%= render "admin/review_comments/comment", review: @review %>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="row">
-    <div class="col">
-      <%= render "admin/reports/show_index", review: @review %>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col">
-      <%= render "admin/review_comments/comment", review: @review %>
-    </div>
-  </div>
-
 </div>

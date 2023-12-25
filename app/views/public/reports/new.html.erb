@@ -1,7 +1,7 @@
-<div class= "container py-5 px-sm-0">
-  <div class= "row mt-5">
-    <div class= "col">
-      <div class="card border-info shadow p-3 mb-5 bg-body-tertiary rounded mx-auto" style="width: 700px;">
+<div class="container">
+  <div class="row">
+    <div class="col-12 offset-lg-3 col-lg-6">
+      <div class="card border-info shadow p-3 mb-5 mt-5 bg-body-tertiary rounded mx-auto">
         <h4>管理者に報告する</h4>
         <%= form_with model: [@review, @report] do |f| %>
           <%= f.text_area :report, class: 'form-control', rows: '6', placeholder: "報告内容を記載" %><br>

@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <h6>感想・考察</h6>
+  </div>
+  <div class="card-body">
+    <!--感想考察が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+    <% if review.body.nil? %>
+      <%= review.body %>
+    <% else %>
+      <!--感想考察が「空」じゃない時は正常に反映する-->
+      <%= safe_join(review.body.split("\n"),tag(:br)) %>
+    <% end %>
+  </div>
+</div>
