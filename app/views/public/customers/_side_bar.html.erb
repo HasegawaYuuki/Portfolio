@@ -1,0 +1,55 @@
+<div class="card p-3">
+  <section>
+    <div class="flex-row">
+      <div class="flex-side_bar">
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+      </div>
+      <div class="flex-side_bar">
+        <% if customer === current_customer %>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              メニュー
+            </button>
+            <div class="dropdown-menu">
+              <%= link_to '新規投稿', new_review_path, class: "dropdown-item" %>
+              <% if customer.email != "guest@example.com" %>
+                <%= link_to '会員情報編集', edit_customer_path(customer.id), class: "dropdown-item" %>
+              <% end %>
+              <%= link_to 'ブックマーク一覧', favorite_index_customer_path(current_customer), class: "dropdown-item" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <div>
+    <p class="mt-2">
+      <% if customer.is_active %>
+        <%= customer.name %>
+      <% else %>
+        <span>ユーザーは退会しています</span>
+      <% end %></p>
+  </div>
+  <div>
+    <%= render "public/relationships/btn", customer: customer %>
+  </div>
+  <div class="mt-2">
+    <%= link_to customer_followings_path(customer.id) do %>
+      フォロー:<%= customer.followings.count %>人
+    <% end %>
+    <%= link_to customer_followers_path(customer.id) do %>
+      フォロワー:<%= customer.followers.count %>人
+    <% end %>
+  </div>
+  <div>
+    <p class="mt-2">自己紹介：</p>
+    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+    <%if customer.introduction.nil? %>
+      <%= customer.introduction %>
+    <% else %>
+      <!--紹介文が「空」じゃない時は正常に反映する-->
+      <%= safe_join(customer.introduction.split("\n"),tag(:br)) %>
+    <%end %>
+  </div>
+</div>

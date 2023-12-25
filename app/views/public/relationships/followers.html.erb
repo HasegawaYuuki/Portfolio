@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2><%= @customer.name %>さんのフォロワー一覧</h2>
+  <% if @customers.exists? %>
+    <section>
+      <% @customers.each do |customer| %>
+        <div class="flex-row">
+          <div class="flex-item">
+            <%= link_to customer_path(customer.id) do %>
+              <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+            <% end %>
+          </div>
+          <div class="flex-item">
+            <%= link_to customer_path(customer.id) do %>
+              <%= customer.name %>
+            <% end %>
+          </div>
+          <div class="flex-item">
+            <%= link_to customer_followings_path(customer) do %>
+              フォロー<%= customer.followings.count %>人
+            <% end %>
+          </div>
+          <div class="flex-item">
+            <%= link_to customer_followers_path(customer) do %>
+              フォロワー<%= customer.followers.count %>人
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  <% else %>
+    <p>フォローされているユーザーはいません</p>
+  <% end %>
+</div>

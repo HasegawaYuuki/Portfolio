@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12 offset-lg-1 col-lg-10">
+      <div class="card p-5">
+        <h3>投稿編集(<%= @review.status_i18n %>)</h3>
+
+        <section class="review-show-top">
+          <div class="flex-row">
+            <div class="col-2">
+              <div class="review-show-left">
+                <%= image_tag @customer.get_image(80,80), class:"rounded-circle" %>
+                <br />
+                <%= @customer.name %>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="review-show-left">
+                タイトル：<%= @review.title %><%= @review.sub_title %>
+                <br />
+                会場名：<%= @review.venue_name %>
+                <br />
+                公演日：<%= @review.date.strftime('%Y/%m/%d') %>
+                <br />
+                開演時間：<%= @review.time.strftime('%H:%M') %>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <section class="admin-review-show-right">
+                <div class="row">
+                  <%= form_with model: @review, url: admin_review_path, method: :patch do |f| %>
+                    <div class="col pl-0">
+                      <label>ネタバレ有無・下書き：</label>
+                      <%= f.radio_button :status, Review.statuses.key(0) %>
+                      <%= f.label :status, Review.statuses_i18n[:spoiler_not], value: Review.statuses.key(0) %>
+                      <%= f.radio_button :status, Review.statuses.key(1) %>
+                      <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
+                      <%= f.submit '更新する', class: "btn btn-outline-success mt-2" %>
+                  <% end %>
+                </div>
+              </section>
+            </div>
+
+
+          </div>
+        </section>
+
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <% @review.review_images.each do |review_images| %>
+              <%= image_tag review_images.variant(resize: '250x500').processed %>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="review-show-bottom">
+          <div class="flex-row">
+            <div class="btn-group-vertical">
+              <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+              <%if @review.body.nil? %>
+                <%= @review.body %>
+              <% else %>
+                <!--感想考察が「空」じゃない時は正常に反映する-->
+                <%= safe_join(@review.body.split("\n"),tag(:br)) %>
+              <% end %>
+            </div>
+          </div>
+        </section>
+
+
+      </div>
+    </div>
+  </div>
+</div>

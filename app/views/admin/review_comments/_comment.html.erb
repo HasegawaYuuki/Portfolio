@@ -1,0 +1,17 @@
+<section class="review-show-bottom">
+  <div class="card">
+    <div class="card-header">
+      <h6>コメント一覧  <%= review.review_comments.count %>件</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% review.review_comments.each do |review_comment| %>
+        <li class="list-group-item">
+          <%= image_tag review_comment.customer.get_image(50,50) %>
+          <%= review_comment.comment %>
+          <br />
+          <%= review_comment.customer.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

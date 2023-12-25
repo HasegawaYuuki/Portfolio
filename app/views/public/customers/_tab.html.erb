@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="tabs d-flex justify-content-between align-items-center">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#notspoile">ネタバレなし</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#spoile">ネタバレあり</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        <div id="notspoile" class="tab-pane fade show active">
+          <%= render "public/reviews/spoiler_not_review", spoiler_not_review: @spoiler_not_review %>
+        </div>
+        <div id="spoile" class="tab-pane fade">
+          <%= render "public/reviews/spoiler_review", spoiler_review: @spoiler_review %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 ​
 ## サイト概要
 ### サイトテーマ
-観劇した舞台の感想や考察をネタバレなしとネタバレありに分けて投稿できるレビューサイト。
+観劇した舞台の感想や考察をネタバレなしとネタバレありに分けて投稿できるコミュニティサイト。
 ​
 ### テーマを選んだ理由
 私は舞台観劇することが好きです。また、感想や考察を他のファンと共有することが魅力に感じています。しかし、イベント前にはネタバレを避けたいという気持ちもあります。SNSなどでは、ネタバレを含む感想が多く出回っているため、予期せず情報を得てしまうことがあります。
@@ -19,7 +19,8 @@
 - ネタバレを含んだ状態で感想、考察を知りたい時
 ​
 ## 設計書
-後ほど設定
+- https://docs.google.com/spreadsheets/d/1j0fIifFNrFLz8yyWwTaTPEqfYVlkGEcv/edit?usp=sharing&ouid=115530028884215138399&rtpof=true&sd=true
+- https://drive.google.com/file/d/1I3uDiqKAWzzAufWXioQclEftNTjXB2hi/view?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)

@@ -1,0 +1,27 @@
+<h3>会員一覧</h3>
+
+<section>
+  <% customers.each do |customer| %>
+  <div class="flex-row">
+    <div class="flex-item">
+      <%= link_to customer_path(customer.id) do %>
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+      <% end %>
+    </div>
+    <div class="flex-item">
+      <%= link_to customer_path(customer.id) do %>
+        <%= customer.name %>
+      <% end %>
+    </div>
+    <div class="flex-item">
+      フォロー<%= customer.followings.count %>人
+    </div>
+    <div class="flex-item">
+      フォロワー<%= customer.followers.count %>人
+    </div>
+    <div class="flex-item">
+      <%= render "public/relationships/btn", customer: customer %>
+    </div>
+  </div>
+  <% end %>
+</section>

@@ -1,0 +1,29 @@
+<div class="card p-3">
+  <section>
+    <div class="flex-row">
+      <div class="flex-side_bar">
+        <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+      </div>
+      <div class="flex-side_bar">
+        <%= link_to "会員情報編集", edit_admin_customer_path(customer.id), class:"btn btn-outline-success mt-2" %>
+      </div>
+    </div>
+  </section>
+  <div>
+    <p class="mt-2">ユーザー名：<%= customer.name %></p>
+  </div>
+  <div class="mt-2">
+    フォロー：<%= customer.followings.count %>人
+    フォロワー：<%= customer.followers.count %>人
+  </div>
+  <div>
+    <p class="mt-2">自己紹介：</p>
+    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+    <%if customer.introduction.nil? %>
+      <%= customer.introduction %>
+    <% else %>
+      <!--紹介文が「空」じゃない時は正常に反映する-->
+      <%= safe_join(customer.introduction.split("\n"),tag(:br)) %>
+    <%end %>
+  </div>
+</div>

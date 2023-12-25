@@ -1,0 +1,46 @@
+<section class="review-show-bottom">
+  <div class="card">
+    <div class="card-header">
+      <h6>コメント一覧  <%= review.review_comments.count %>件</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      <% review.review_comments.each do |review_comment| %>
+        <li class="list-group-item">
+
+          <section class="review-show-top">
+            <div class="flex-row">
+              <div class="review-show-left">
+                <%= image_tag review_comment.customer.get_image(50,50), class:"rounded-circle" %>
+              </div>
+
+              <div class="report-show-right ml-3">
+                ユーザー名：
+                <% if review_comment.customer.is_active %>
+                   <%= review_comment.customer.name %>
+                <% else %>
+                  <span>ユーザーは退会しています</span>
+                <% end %>
+                <br />
+                コメント日：<%= review_comment.created_at.strftime('%Y/%m/%d') %>
+                <br />
+                <% if review_comment.comment.nil? %>
+                  <%= review_comment.comment %>
+                <% else %>
+                  <!--コメントが「空」じゃない時は正常に反映する-->
+                  <%= safe_join(review_comment.comment.split("\n"),tag(:br)) %>
+                <% end %>
+              </div>
+
+              <div class="report-show-right ml-5" id="review_comment">
+                <% if review_comment.customer == current_customer %>
+                  <%= link_to "削除", review_review_comment_path(review, review_comment, review_comment.id), method: :delete, "data-confirm" => "本当に消しますか？",class:"btn btn-outline-danger", remote:true, data: {"turbolinks" => false}  %>
+                <% end %>
+              </div>
+            </div>
+          </section>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>

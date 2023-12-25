@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 offset-lg-1 col-lg-10">
+      <h3>会員一覧</h3>
+
+      <section>
+        <% @customers.each do |customer| %>
+        <div class="flex-row">
+          <div class="flex-item">
+            <%= image_tag customer.get_image(80,80), class:"rounded-circle" %>
+          </div>
+          <div class="flex-item">
+            <%= link_to admin_customer_path(customer.id) do %>
+              <%= customer.name %>
+            <% end %>
+          </div>
+          <div class="flex-item">
+            フォロー<%= customer.followings.count %>人
+          </div>
+          <div class="flex-item">
+            フォロワー<%= customer.followers.count %>人
+          </div>
+          <div class="flex-item <%= customer.is_active ? 'text-success' : 'text-muted' %>">
+            <%= customer.is_active ? '有効' : '退会' %>
+          </div>
+        </div>
+        <% end %>
+      </section>
+
+      <div class="mx-auto">
+        <div class="pagination">
+          <%= paginate @customers %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
