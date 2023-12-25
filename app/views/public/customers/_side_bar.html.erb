@@ -24,7 +24,12 @@
     </div>
   </section>
   <div>
-    <p class="mt-2">ユーザー名：<%= customer.name %></p>
+    <p class="mt-2">
+      <% if customer.is_active %>
+        <%= customer.name %>
+      <% else %>
+        <span>ユーザーは退会しています</span>
+      <% end %></p>
   </div>
   <div>
     <%= render "public/relationships/btn", customer: customer %>
