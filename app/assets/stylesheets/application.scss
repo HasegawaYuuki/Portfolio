@@ -27,6 +27,27 @@ $dark: #a8a8ff;
   border-color: $primary;
 }
 
+.btn-outline-primary:hover, .btn-outline-primary:focus,
+.btn-outline-primary:active, .btn-outline-primary:active:focus, .btn-outline-primary:active:hover, .btn-outline-primary:active.focus,
+.btn-outline-primary.active, .btn-outline-primary.active:focus, .btn-outline-primary.active:hover, .btn-outline-primary.active.focus,
+.open > .dropdown-toggle.btn-outline-primary,
+.open > .dropdown-toggle.btn-outline-primary:hover,
+.open > .dropdown-toggle.btn-outline-primary:focus,
+.open > .dropdown-toggle.btn-outline-primary.focus,
+.btn-outline-primary.disabled:hover, .btn-outline-primary[disabled]:hover, fieldset[disabled] .btn-outline-primary:hover,
+.btn-outline-primary.disabled:focus, .btn-outline-primary[disabled]:focus, fieldset[disabled] .btn-outline-primary:focus,
+.btn-outline-primary.disabled.focus, .btn-outline-primary[disabled].focus, fieldset[disabled] .btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primarys.dropdown-toggle {
+    background: $primary; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border-color: $primary;
+}
+
+.btn-outline-success:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem #0073a8;
+}
+
 .btn-outline-secondary {
   color: $secondary;
   border-color: $secondary;
@@ -55,12 +76,32 @@ $dark: #a8a8ff;
 }
 
 .btn-outline-success:not(:disabled):not(.disabled):active:focus {
-  box-shadow: 0 0 0 0.2rem #ffcb07;
+  box-shadow: 0 0 0 0.2rem #d4d9df;
 }
 
 .btn-outline-danger {
   color: $danger;
   border-color: $danger;
+}
+
+.btn-outline-danger:hover, .btn-outline-danger:focus,
+.btn-outline-danger:active, .btn-outline-danger:active:focus, .btn-outline-danger:active:hover, .btn-outline-danger:active.focus,
+.btn-outline-danger.active, .btn-outline-danger.active:focus, .btn-outline-danger.active:hover, .btn-outline-danger.active.focus,
+.open > .dropdown-toggle.btn-outline-danger,
+.open > .dropdown-toggle.btn-outline-danger:hover,
+.open > .dropdown-toggle.btn-outline-danger:focus,
+.open > .dropdown-toggle.btn-outline-danger.focus,
+.btn-outline-danger.disabled:hover, .btn-outline-danger[disabled]:hover, fieldset[disabled] .btn-outline-danger:hover,
+.btn-outline-danger.disabled:focus, .btn-outline-danger[disabled]:focus, fieldset[disabled] .btn-outline-danger:focus,
+.btn-outline-danger.disabled.focus, .btn-outline-danger[disabled].focus, fieldset[disabled] .btn-outline-danger.focus,
+.btn-outline-danger:not(:disabled):not(.disabled):active{
+    background: $danger; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border-color: $danger;
+}
+
+.btn-outline-danger:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem #b33e5c;
 }
 
 .btn-outline-warning {
@@ -90,7 +131,7 @@ $dark: #a8a8ff;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus {
-  box-shadow: 0 0 0 0.2rem #ffcb07;
+  box-shadow: 0 0 0 0.2rem #fde8d0;
 }
 
 .btn-outline-light {
