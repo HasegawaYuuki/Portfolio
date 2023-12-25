@@ -1,31 +1,38 @@
 <!--顧客側　ログイン画面-->
+<div class="container">
+  <div class="row">
+    <div class="col-12 offset-lg-3 col-lg-6">
 
-<div class="card border-info shadow p-3 mb-5 bg-body-tertiary rounded mx-auto mt-5" style="width: 500px;">
+      <div class="card border-info shadow p-3 mb-5 bg-body-tertiary rounded mx-auto mt-5">
 
-  <h2>ログイン</h2>
-  <!--ログインフォーム-->
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+        <h2>ログイン</h2>
+        <!--ログインフォーム-->
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "ログイン", class: "btn btn-outline-success" %>
+          </div>
+        <% end %>
+
+
       </div>
-    <% end %>
 
-    <div class="actions">
-      <%= f.submit "ログイン", class: "btn btn-outline-success" %>
     </div>
-  <% end %>
-
-
+  </div>
 </div>
