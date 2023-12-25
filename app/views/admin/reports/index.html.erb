@@ -1,64 +1,68 @@
 <div class= "container mt-5">
-  <h3>報告一覧</h3>
+  <div class="row">
+    <div class="col-12 offset-lg-1 col-lg-10">
+      <h3>報告一覧</h3>
 
-  <div class="report-search mb-3">
-    <%= form_tag admin_reports_path, method: :get do %>
-      <%= label_tag 'report_status', '報告ステータス：' %>
-      <%= select_tag 'report_status', options_for_select(Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] }, params[:report_status]), include_blank: true %>
-      <%= submit_tag '検索' %>
-    <% end %>
-  </div>
-
-  <% if @reports.exists? %>
-
-    <section>
-      <div class="flex-row report-title">
-        <div class="flex-report-id mr-3"></div>
-        <div class="flex-report">投稿ユーザー名</div>
-        <div class="flex-report">報告ユーザー名</div>
-        <div class="flex-report">投稿詳細</div>
-        <div class="flex-report">ステータス</div>
-        <div class="flex-report">投稿日</div>
-        <div class="flex-report">報告日</div>
+      <div class="report-search mb-3">
+        <%= form_tag admin_reports_path, method: :get do %>
+          <%= label_tag 'report_status', '報告ステータス：' %>
+          <%= select_tag 'report_status', options_for_select(Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] }, params[:report_status]), include_blank: true %>
+          <%= submit_tag '検索' %>
+        <% end %>
       </div>
 
-      <% @reports.each do |report| %>
-        <div class="flex-row">
-          <div class="flex-report-id mr-3">
-            <%= report.id %>
+      <% if @reports.exists? %>
+
+        <section>
+          <div class="flex-row report-title">
+            <div class="flex-report-id mr-3"></div>
+            <div class="flex-report">投稿ユーザー名</div>
+            <div class="flex-report">報告ユーザー名</div>
+            <div class="flex-report">投稿詳細</div>
+            <div class="flex-report">ステータス</div>
+            <div class="flex-report">投稿日</div>
+            <div class="flex-report">報告日</div>
           </div>
-          <div class="flex-report">
-            <%= @customers.find(report.review.customer_id).name %>
-          </div>
-          <div class="flex-report">
-            <%= @customers.find(report.customer_id).name %>
-          </div>
-          <div class="flex-report">
-            <%= link_to "投稿詳細", admin_review_path(report.review_id) %>
-          </div>
-          <div class="flex-report">
-            <%= link_to edit_admin_report_path(report.id) do %>
-              <%= report.report_status_i18n %>
-            <% end %>
-          </div>
-          <div class="flex-report">
-            <%= report.review.created_at.strftime('%Y/%m/%d') %>
-          </div>
-          <div class="flex-report">
-          <%= report.created_at.strftime('%Y/%m/%d') %>
-          </div>
+
+          <% @reports.each do |report| %>
+            <div class="flex-row">
+              <div class="flex-report-id mr-3">
+                <%= report.id %>
+              </div>
+              <div class="flex-report">
+                <%= @customers.find(report.review.customer_id).name %>
+              </div>
+              <div class="flex-report">
+                <%= @customers.find(report.customer_id).name %>
+              </div>
+              <div class="flex-report">
+                <%= link_to "投稿詳細", admin_review_path(report.review_id) %>
+              </div>
+              <div class="flex-report">
+                <%= link_to edit_admin_report_path(report.id) do %>
+                  <%= report.report_status_i18n %>
+                <% end %>
+              </div>
+              <div class="flex-report">
+                <%= report.review.created_at.strftime('%Y/%m/%d') %>
+              </div>
+              <div class="flex-report">
+              <%= report.created_at.strftime('%Y/%m/%d') %>
+              </div>
+            </div>
+          <% end %>
+        </section>
+      <% else %>
+        <div class="draft-text d-flex align-items-center justify-content-center", style="height:250px; margin: auto;">
+          報告はありません
         </div>
       <% end %>
-    </section>
-  <% else %>
-    <div class="draft-text d-flex align-items-center justify-content-center", style="height:250px; margin: auto;">
-      報告はありません
-    </div>
-  <% end %>
 
-  <div class="mx-auto">
-    <div class="pagination">
-      <%= paginate @reports %>
+      <div class="mx-auto">
+        <div class="pagination">
+          <%= paginate @reports %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
