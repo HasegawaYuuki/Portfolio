@@ -42,6 +42,7 @@ class Review < ApplicationRecord
     # 古いタグを消す
     old_tags.each do |old|
       self.tags.delete　Tag.find_by(name: old)
+      self.tags.destroy(tag_to_delete) if tag_to_delete
     end
 
     # 新しいタグを保存
@@ -50,6 +51,7 @@ class Review < ApplicationRecord
       self.tags << tags
     end
   end
+
 
   # 検索機能のためのメソッド
   def self.looks(search, word)
