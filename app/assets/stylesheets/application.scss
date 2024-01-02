@@ -238,3 +238,13 @@ body {
 .favolit-btn {
   font-size: 20px
 }
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
