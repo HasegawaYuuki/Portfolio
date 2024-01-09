@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col">
       <h3 class="row">
-        投稿詳細(<%= @review.status_i18n %>)
+        <%= @review.title %><%= @review.sub_title %>(<%= @review.status_i18n %>)
         <div class="mt-2" id="favorite_btn_<%= @review.id %>">
           <%= render "public/favorites/btn", review: @review %>
         </div>
@@ -22,6 +22,29 @@
         </div>
       </section>
 
+
+      <section class="review-show">
+        <div class="flex-row">
+          <!--<div class="review-item mt-3">-->
+            <%# @review.review_images.each do |review_images| %>
+              <%#= image_tag review_images.variant(resize: '250x500').processed %>
+            <%# end %>
+          <!--</div>-->
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <% @review.review_images.each do |review_images| %>
+                <%= image_tag review_images, class: "swiper-slide" %>
+              <% end %>
+            </div>
+            <!-- ナビゲーションボタン （前、次） -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <!-- ページネーションの要素 -->
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
       <div class="row">
 
         <div class="col-12 col-md-3 col-lg-2">
@@ -37,8 +60,6 @@
         <div class="col-12 col-md-8 col-lg-10">
           <section class="review-show-top">
             <div class="review-show-right ml-3">
-              タイトル：<%= @review.title %><%= @review.sub_title %>
-              <br />
               会場名：<%= @review.venue_name %>
               <br />
               公演日：<%= @review.date&.strftime('%Y/%m/%d') %>
@@ -49,16 +70,6 @@
         </div>
 
       </div>
-
-      <section class="review-show">
-        <div class="flex-row">
-          <div class="review-item mt-3">
-            <% @review.review_images.each do |review_images| %>
-              <%= image_tag review_images.variant(resize: '250x500').processed %>
-            <% end %>
-          </div>
-        </div>
-      </section>
 
       <div class="row mt-2">
         <div class="col">
@@ -79,3 +90,5 @@
     </div>
   </div>
 </div>
+
+<!--<script src="script.js"></script>-->
