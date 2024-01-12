@@ -8,8 +8,12 @@
 
           <div class="card-header">
             <%= link_to customer_path(draft_review.customer.id) do %>
-              <%= image_tag draft_review.customer.get_image(80,80), class:"rounded-circle" %><br>
-              <%= draft_review.customer.name %>
+              <%= image_tag draft_review.customer.get_image(80,80), class:"rounded-circle" %>
+              <% if draft_review.customer.is_active %>
+                <%= draft_review.customer.name %>
+              <% else %>
+                <span>ユーザーは退会しています</span>
+              <% end %>
             <% end %>
           </div>
 
