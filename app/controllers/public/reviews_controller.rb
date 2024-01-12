@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
     @review = Review.new
   end
@@ -11,14 +11,15 @@ class Public::ReviewsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.save
+      if @review.draft?
        @review.save_tags(tag_list)
-      redirect_to review_path(@review.id), notice:'投稿が公開されました'
-    elsif @review.draft?
-      redirect_to customer_path(current_customer.id), notice:'下書きが保存されました'
+        redirect_to review_path(@review.id), notice:'下書きが保存されましたた'
+      else
+        redirect_to review_path(@review.id), notice:'投稿が公開されました'
+      end
     else
       render :new
     end
-
   end
 
   def index
