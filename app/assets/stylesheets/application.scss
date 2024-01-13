@@ -159,7 +159,13 @@ body {
 }
 
 .link {
+  text-decoration: none;
   color: $info;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: #a22041;
 }
 
 .header-search {
