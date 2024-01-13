@@ -15,7 +15,7 @@
  */
 $primary: #0073a8;
 $secondary: #d4d9df;
-$success: #2cb4ad; //ナイルブルー
+$success: #a22041; //ナイルブルー
 $danger: #b33e5c; //ワインレッド
 $warning: #a8bf93;
 $info: #fde8d0;
@@ -159,7 +159,13 @@ body {
 }
 
 .link {
+  text-decoration: none;
   color: $info;
+}
+
+.dropdown-item {
+  text-decoration: none;
+  color: #a22041;
 }
 
 .header-search {

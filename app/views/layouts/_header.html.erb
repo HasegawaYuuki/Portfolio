@@ -10,19 +10,17 @@
       <div class="row header-nav">
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
-            <li class="nav-item mx-3 mt-2">
-              <i class="fa-solid fa-users"></i>
-              <%= link_to '会員一覧', admin_customers_path, class: "link" %>
-            </li>
-            <li class="nav-item mx-3 mt-2">
-              <i class="fa-solid fa-list"></i>
-              <%= link_to '投稿一覧', admin_reviews_path, class: "link" %>
-            </li>
-            <li class="nav-item mx-3 mt-2">
-              <%= link_to 'コメント一覧', admin_review_comments_path, class: "link" %>
-            </li>
-            <li class="nav-item mx-3 mt-2">
-              <%= link_to '報告一覧', admin_reports_path, class: "link" %>
+            <li class="nav-item dropdown mx-3">
+              <a class="nav-link dropdown-toggle link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-list link"></i>
+                <span class="link">一覧</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to '会員一覧', admin_customers_path, class: "dropdown-item" %>
+                <%= link_to '投稿一覧', admin_reviews_path, class: "dropdown-item" %>
+                <%= link_to 'コメント一覧', admin_review_comments_path, class: "dropdown-item" %>
+                <%= link_to '報告一覧', admin_reports_path, class: "dropdown-item" %>
+              </div>
             </li>
             <li class="nav-item mx-3 mt-2">
               <i class="fa-solid fa-right-from-bracket"></i>
@@ -35,7 +33,7 @@
             <!--<li class="nav-item mx-3">-->
             <!--  <%#= link_to 'マイページ', customer_path(current_customer.id), class: "btn btn-outline-info" %>-->
             <!--</li>-->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mx-3">
               <a class="nav-link dropdown-toggle link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-user link"></i>
                 <span class="link">マイページ</span>
@@ -68,12 +66,15 @@
             </li>
           <% else %>
             <li class="nav-item mx-3 mt-2">
+              <i class="fa-solid fa-plus"></i>
               <%= link_to '新規登録', new_customer_registration_path, class: "link" %>
             </li>
             <li class="nav-item mx-3 mt-2">
-              <%= link_to 'ログイン', new_customer_session_path, class: "linko" %>
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <%= link_to 'ログイン', new_customer_session_path, class: "link" %>
             </li>
             <li class="nav-item mx-3 mt-2">
+              <i class="fa-solid fa-right-to-bracket"></i>
               <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, method: :post, class: "link" %>
             </li>
           <% end %>
