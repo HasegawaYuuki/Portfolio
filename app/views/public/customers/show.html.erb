@@ -5,9 +5,9 @@
     </div>
     <div class="col-12 col-lg-9">
       <% if @customer === current_customer %>
-        <%= render 'public/customers/customer_tab', spoiler_review: @spoiler_review,spoiler_not_review: @spoiler_not_review, draft_review: @draft_review %>
+        <%= render 'public/customers/customer_tab', spoiler_review: @spoiler_review, spoiler_not_review: @spoiler_not_review, draft_review: @draft_review %>
       <% else %>
-        <%= render 'public/customers/tab', spoiler_review: @spoiler_review,not_spoier_review: @not_spoiler_review %>
+        <%= render 'public/customers/tab', spoiler_review: @spoiler_review, spoiler_not_review: @spoiler_not_review %>
       <% end %>
     </div>
   </div>
