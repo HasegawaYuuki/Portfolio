@@ -11,24 +11,24 @@
             <div class="flex-row">
               <div class="review-show-left">
                 <%= image_tag review_comment.customer.get_image(50,50), class:"rounded-circle" %>
-              </div>
-
-              <div class="report-show-right ml-3">
-                ユーザー名：
+                <br />
                 <% if review_comment.customer.is_active %>
                    <%= review_comment.customer.name %>
                 <% else %>
                   <span>ユーザーは退会しています</span>
                 <% end %>
-                <br />
-                コメント日：<%= review_comment.created_at.strftime('%Y/%m/%d') %>
-                <br />
+              </div>
+
+              <div class="report-show-right ml-3">
                 <% if review_comment.comment.nil? %>
                   <%= review_comment.comment %>
                 <% else %>
                   <!--コメントが「空」じゃない時は正常に反映する-->
                   <%= safe_join(review_comment.comment.split("\n"),tag(:br)) %>
                 <% end %>
+                <br />
+                <br />
+                コメント日：<%= review_comment.created_at.strftime('%Y/%m/%d') %>
               </div>
 
               <div class="report-show-right ml-5" id="review_comment">

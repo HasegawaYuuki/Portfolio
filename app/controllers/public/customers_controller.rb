@@ -10,9 +10,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @spoiler_review = @customer.reviews.where(status: :spoiler)
-    @spoiler_not_review = @customer.reviews.where(status: :spoiler_not)
-    @draft_review = @customer.reviews.where(status: :draft)
+    @spoiler_review = @customer.reviews.where(status: :spoiler).page(params[:page]).per(12)
+    @spoiler_not_review = @customer.reviews.where(status: :spoiler_not).page(params[:page]).per(12)
+    @draft_review = @customer.reviews.where(status: :draft).page(params[:page]).per(12)
   end
 
   def edit
