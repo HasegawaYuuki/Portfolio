@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       resource :reports, only: [:new, :create]
       get :complete, on: :member
     end
-    resources :tags
+    resources :tags, only: [:index]
     resources :taggings
     root to: 'homes#top'
     get "search_tag" => "reviews#search_tag"

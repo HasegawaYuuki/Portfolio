@@ -11,8 +11,8 @@ class Public::ReviewsController < ApplicationController
     # 受け取った値を,で区切って配列にする
     tag_list = params[:review][:tag_id].split(',')
     if @review.save
+      @review.save_tags(tag_list)
       if @review.draft?
-       @review.save_tags(tag_list)
         redirect_to review_path(@review.id), notice:'下書きが保存されましたた'
       else
         redirect_to review_path(@review.id), notice:'投稿が公開されました'
@@ -25,7 +25,7 @@ class Public::ReviewsController < ApplicationController
   def index
     @spoiler_review = Review.where(status: :spoiler).order(created_at: :desc)
     @spoiler_not_review = Review.where(status: :spoiler_not).order(created_at: :desc)
-    @tag_list = Tag.all
+    @tag_list = Tag.all.order(created_at: :desc).limit(10)
     @customer = current_customer
   end
 
