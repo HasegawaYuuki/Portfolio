@@ -14,7 +14,7 @@
  *= require_self
  */
 $primary: #0073a8;
-$secondary: #d4d9df;
+$secondary: #a22041;
 $success: #2cb4ad; //ナイルブルー
 $danger: #a22041;
 $warning: #a8bf93;
@@ -51,6 +51,32 @@ $dark: #a8a8ff;
 .btn-outline-secondary {
   color: $secondary;
   border-color: $secondary;
+}
+
+.btn-outline-secondary:hover, .btn-outline-secondary:focus,
+.btn-outline-secondary:active, .btn-outline-secondary:active:focus, .btn-outline-secondary:active:hover, .btn-outline-secondary:active.focus,
+.btn-outline-secondary.active, .btn-outline-secondary.active:focus, .btn-outline-secondary.active:hover, .btn-outline-secondary.active.focus,
+.open > .dropdown-toggle.btn-outline-secondary,
+.open > .dropdown-toggle.btn-outline-secondary:hover,
+.open > .dropdown-toggle.btn-outline-secondary:focus,
+.open > .dropdown-toggle.btn-outline-secondary.focus,
+.btn-outline-secondary.disabled:hover, .btn-outline-secondary[disabled]:hover, fieldset[disabled] .btn-outline-secondary:hover,
+.btn-outline-secondary.disabled:focus, .btn-outline-secondary[disabled]:focus, fieldset[disabled] .btn-outline-secondary:focus,
+.btn-outline-secondary.disabled.focus, .btn-outline-secondary[disabled].focus, fieldset[disabled] .btn-outline-secondary.focus,
+.btn-outline-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-secondary.dropdown-toggle {
+    background: $secondary; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
+    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    border-color: $secondary;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem #a22041;
+}
+
+.btn-outline-danger {
+  color: $danger;
+  border-color: $danger;
 }
 
 .btn-outline-success {
@@ -114,7 +140,7 @@ $dark: #a8a8ff;
   border-color: $info;
 }
 
-.btn-outline-info:hover, .btn-outline-info:focus,
+.btn-outline-info:hover, .btn-outline-info:focus, .btn-info:hover, .btn-info,
 .btn-outline-info:active, .btn-outline-info:active:focus, .btn-outline-info:active:hover, .btn-outline-info:active.focus,
 .btn-outline-info.active, .btn-outline-info.active:focus, .btn-outline-info.active:hover, .btn-outline-info.active.focus,
 .open > .dropdown-toggle.btn-outline-info,
