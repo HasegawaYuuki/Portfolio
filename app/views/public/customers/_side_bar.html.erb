@@ -8,7 +8,7 @@
         <% if customer === current_customer %>
 
           <div class="btn-group">
-            <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               メニュー
             </button>
             <div class="dropdown-menu">
@@ -16,6 +16,8 @@
               <% if customer.email != "guest@example.com" %>
                 <%= link_to '会員情報編集', edit_customer_path(customer.id), class: "dropdown-item" %>
               <% end %>
+              <%= link_to 'フォロー一覧', customer_followings_path(current_customer.id), class: "dropdown-item" %>
+              <%= link_to 'フォロワー一覧', customer_followers_path(current_customer.id), class: "dropdown-item" %>
               <%= link_to 'ブックマーク一覧', favorite_index_customer_path(current_customer), class: "dropdown-item" %>
             </div>
           </div>
