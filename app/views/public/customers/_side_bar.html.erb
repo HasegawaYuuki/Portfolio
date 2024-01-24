@@ -12,13 +12,13 @@
               メニュー
             </button>
             <div class="dropdown-menu dropdown-sidebar-menu">
-              <%= link_to '新規投稿', new_review_path, class: "dropdown-item" %>
+              <%= link_to '新規投稿', new_review_path, class: "dropdown-item dropdown-sidebar-item" %>
               <% if customer.email != "guest@example.com" %>
-                <%= link_to '会員情報編集', edit_customer_path(customer.id), class: "dropdown-item" %>
+                <%= link_to '会員情報編集', edit_customer_path(customer.id), class: "dropdown-item dropdown-sidebar-item" %>
               <% end %>
-              <%= link_to 'フォロー一覧', customer_followings_path(current_customer.id), class: "dropdown-item" %>
-              <%= link_to 'フォロワー一覧', customer_followers_path(current_customer.id), class: "dropdown-item" %>
-              <%= link_to 'ブックマーク一覧', favorite_index_customer_path(current_customer), class: "dropdown-item" %>
+              <%= link_to 'フォロー一覧', customer_followings_path(current_customer.id), class: "dropdown-item dropdown-sidebar-item" %>
+              <%= link_to 'フォロワー一覧', customer_followers_path(current_customer.id), class: "dropdown-item dropdown-sidebar-item" %>
+              <%= link_to 'ブックマーク一覧', favorite_index_customer_path(current_customer), class: "dropdown-item dropdown-sidebar-item" %>
             </div>
           </div>
         <% end %>
