@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :correct_customer, only: [:edit, :update]
 
   def new
     @review = Review.new
@@ -85,6 +86,12 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :sub_title, :body, :venue_name, :date, :time, :status, review_images: [])
+  end
+
+  def correct_customer
+    @review = Review.find(params[:id])
+    @customer = @review.customer
+    redirect_to(reviews_path) unless @customer == current_customer
   end
 
 end
