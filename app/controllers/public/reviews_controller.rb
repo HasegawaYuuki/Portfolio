@@ -39,6 +39,11 @@ class Public::ReviewsController < ApplicationController
     @review_comment = ReviewComment.new
     #コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @review.review_comments.order(created_at: :desc)
+    if @review.draft? && @review.customer != current_customer
+      respond_to do |format|
+        format.html { redirect_to reviews_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
 
   def edit
