@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :correct_customer, only: [:edit, :update]
 
   def new
     @review = Review.new
@@ -38,6 +39,11 @@ class Public::ReviewsController < ApplicationController
     @review_comment = ReviewComment.new
     #コメント一覧表示で使用する全コメントデータを代入（新着順で表示）
     @comments = @review.review_comments.order(created_at: :desc)
+    if @review.draft? && @review.customer != current_customer
+      respond_to do |format|
+        format.html { redirect_to reviews_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
 
   def edit
@@ -85,6 +91,12 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :sub_title, :body, :venue_name, :date, :time, :status, review_images: [])
+  end
+
+  def correct_customer
+    @review = Review.find(params[:id])
+    @customer = @review.customer
+    redirect_to(reviews_path) unless @customer == current_customer
   end
 
 end

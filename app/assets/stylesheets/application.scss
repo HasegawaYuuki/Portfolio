@@ -66,7 +66,7 @@ $dark: #a8a8ff;
 .btn-outline-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-outline-secondary.dropdown-toggle {
     background: $secondary; //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-    color: black; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
+    color: #fde8d0; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
     border-color: $secondary;
 }
 
@@ -136,7 +136,7 @@ $dark: #a8a8ff;
 }
 
 .btn-outline-info {
-  color: $info;
+  color: #a22041;
   border-color: $info;
 }
 
@@ -193,6 +193,21 @@ body {
   text-decoration: none;
   color: #a22041;
 }
+
+.dropdown-sidebar-item {
+  text-decoration: none;
+  background-color: #a22041;
+  color: #fde8d0;
+}
+
+.dropdown-menu {
+  background-color: #fde8d0;
+}
+
+.dropdown-sidebar-menu {
+  background-color: #a22041;
+}
+
 
 .header-search {
   display: flex;

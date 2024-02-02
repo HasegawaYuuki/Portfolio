@@ -30,7 +30,7 @@
   <br />
   <%= f.radio_button :status, Review.statuses.key(0) %>
   <%= f.label :status, Review.statuses_i18n[:spoiler_not], value: Review.statuses.key(0) %>
-  <%= f.radio_button :status, Review.statuses.key(1) %>
+  <%= f.radio_button :status, Review.statuses.key(1), checked: true %>
   <%= f.label :status, Review.statuses_i18n[:spoiler], value: Review.statuses.key(1) %>
   <%= f.radio_button :status, Review.statuses.key(2) %>
   <%= f.label :status, Review.statuses_i18n[:draft], value: Review.statuses.key(2) %>
