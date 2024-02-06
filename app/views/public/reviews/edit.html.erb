@@ -1,8 +1,18 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col">
-      <div class="card border-info shadow p-3 mb-5 bg-body-tertiary rounded mx-auto" style="width: 700px;">
+    <div class="col-12 offset-lg-2 col-lg-8">
+      <div class="card input-card shadow p-3 mb-5 bg-body-tertiary rounded mx-auto">
         <h3>投稿編集</h3>
+        <% if @review.errors.any? %>
+          <div class="alert alert-danger">
+            <%= @review.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <%= render 'public/reviews/form', review: @review, tag_list: @tag_list %>
       </div>
     </div>

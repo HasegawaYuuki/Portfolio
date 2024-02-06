@@ -41,7 +41,7 @@ class Public::ReviewsController < ApplicationController
     @comments = @review.review_comments.order(created_at: :desc)
     if @review.draft? && @review.customer != current_customer
       respond_to do |format|
-        format.html { redirect_to reviews_path, notice: 'このページにはアクセスできません' }
+        format.html { redirect_to reviews_path, notice: 'このページは非公開のためアクセスできません' }
       end
     end
   end
