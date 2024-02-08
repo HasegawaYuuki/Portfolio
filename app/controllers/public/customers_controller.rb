@@ -22,11 +22,11 @@ class Public::CustomersController < ApplicationController
   def update
     customer = current_customer
     if customer.update(customer_params)
-      flash[:edit] = "登録情報変更に成功しました。"
-      redirect_to customer_path
+      # flash[:edit] = "登録情報変更に成功しました。"
+      redirect_to customer_path, notice:"登録情報変更に成功しました。"
     else
-      flash[:edit_danger] = "登録情報変更に失敗しました。"
-      redirect_to customer_path
+      # flash[:edit_danger] = "登録情報変更に失敗しました。"
+      redirect_to customer_path, notice:"登録情報変更に失敗しました。"
     end
   end
 
