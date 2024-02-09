@@ -22,7 +22,19 @@
     </div>
 
     <div class="main">
-      <div class="notice alert-danger"><%= notice %></div>
+      <div class="notice alert-danger"><%#= notice %></div>
+      <!--成功時のアラートメッセージ-->
+      <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+      <% end %>
+      <!--失敗時のアラートメッセージ-->
+      <% if flash[:danger] %>
+      <div class="alert alert-danger">
+        <%= flash[:danger] %>
+      </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
