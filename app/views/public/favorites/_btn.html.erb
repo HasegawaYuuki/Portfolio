@@ -1,13 +1,13 @@
 <% if review.favorited_by?(current_customer) %>
   <%= link_to review_favorites_path(review), method: :delete, remote: true, data: {"turbolinks" => false} do %>
     <div class="favolit-btn">
-      <i class="fa-solid fa-bookmark" aria-hidden="true" style="color: black;"></i>
+      <i class="fa-solid fa-bookmark" aria-hidden="true" style="color: #a22041;"></i>
     </div>
   <% end %>
 <% else %>
   <%= link_to review_favorites_path(review), method: :post, remote: true, data: {"turbolinks" => false} do %>
     <div class="favolit-btn">
-      <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+      <i class="fa-regular fa-bookmark" aria-hidden="true" style="color: #a22041;"></i>
     </div>
   <% end %>
 <% end %>

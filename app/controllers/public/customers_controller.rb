@@ -22,10 +22,10 @@ class Public::CustomersController < ApplicationController
   def update
     customer = current_customer
     if customer.update(customer_params)
-      flash[:edit] = "登録情報変更に成功しました。"
+      flash[:success] = "登録情報変更に成功しました。"
       redirect_to customer_path
     else
-      flash[:edit_danger] = "登録情報変更に失敗しました。"
+      flash[:danger] = "登録情報変更に失敗しました。"
       redirect_to customer_path
     end
   end
@@ -45,7 +45,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     current_customer.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:danger] = "退会処理を実行いたしました"
     redirect_to root_path
   end
 
@@ -65,7 +65,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.email == "guest@example.com"
-      redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to customer_path(current_customer) , danger: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 

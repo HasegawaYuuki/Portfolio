@@ -14,9 +14,11 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       @review.save_tags(tag_list)
       if @review.draft?
-        redirect_to review_path(@review.id), notice:'下書きが保存されましたた'
+        flash[:success] = "下書きが保存されました"
+        redirect_to review_path(@review.id)
       else
-        redirect_to review_path(@review.id), notice:'投稿が公開されました'
+        flash[:success] = "投稿が公開されました"
+        redirect_to review_path(@review.id)
       end
     else
       render :new
@@ -41,7 +43,7 @@ class Public::ReviewsController < ApplicationController
     @comments = @review.review_comments.order(created_at: :desc)
     if @review.draft? && @review.customer != current_customer
       respond_to do |format|
-        format.html { redirect_to reviews_path, notice: 'このページは非公開のためアクセスできません' }
+        format.html { redirect_to reviews_path, danger: 'このページは非公開のためアクセスできません' }
       end
     end
   end
@@ -59,9 +61,13 @@ class Public::ReviewsController < ApplicationController
     tag_list = params[:review][:tag_id].split(',')
     if @review.update(review_params)
       @review.save_tags(tag_list)
-      redirect_to review_path(@review.id), notice:'編集が完了しました'
-    elsif @review.draft?
-      redirect_to customer_path(current_customer.id), notice:'下書きが保存されました'
+      if @review.draft?
+        flash[:success] = "下書きに保存されました"
+        redirect_to customer_path(current_customer.id)
+      else
+        flash[:success] = "編集が完了しました"
+        redirect_to review_path(@review.id)
+      end
     else
       render :edit
     end
